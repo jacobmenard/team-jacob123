@@ -1,0 +1,14 @@
+
+.quicksand {
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+.flex-center-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-align {
+    text-align: center;
+}
