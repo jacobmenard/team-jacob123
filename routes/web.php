@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 
 // Route::get('loginpage2', 'LoginController@loginpage');
 
-Route::get('login', 'LoginController@login');
+// Route::get('login', 'LoginController@login');
