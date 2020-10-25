@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9
+class ComposerStaticInit01f80b6a3b82d2bb6292d3f3730ba54a
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -123,10 +123,12 @@ class ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
+            'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
         ),
         'I' => 
         array (
+            'Illuminate\\Foundation\\Auth\\' => 27,
             'Illuminate\\' => 11,
         ),
         'G' => 
@@ -379,9 +381,17 @@ class ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
+        'Laravel\\Ui\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/ui/src',
+        ),
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
+        ),
+        'Illuminate\\Foundation\\Auth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/ui/auth-backend',
         ),
         'Illuminate\\' => 
         array (
@@ -879,6 +889,7 @@ class ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9
         'Facade\\Ignition\\SolutionProviders\\MissingAppKeySolutionProvider' => __DIR__ . '/..' . '/facade/ignition/src/SolutionProviders/MissingAppKeySolutionProvider.php',
         'Facade\\Ignition\\SolutionProviders\\MissingColumnSolutionProvider' => __DIR__ . '/..' . '/facade/ignition/src/SolutionProviders/MissingColumnSolutionProvider.php',
         'Facade\\Ignition\\SolutionProviders\\MissingImportSolutionProvider' => __DIR__ . '/..' . '/facade/ignition/src/SolutionProviders/MissingImportSolutionProvider.php',
+        'Facade\\Ignition\\SolutionProviders\\MissingLivewireComponentSolutionProvider' => __DIR__ . '/..' . '/facade/ignition/src/SolutionProviders/MissingLivewireComponentSolutionProvider.php',
         'Facade\\Ignition\\SolutionProviders\\MissingMixManifestSolutionProvider' => __DIR__ . '/..' . '/facade/ignition/src/SolutionProviders/MissingMixManifestSolutionProvider.php',
         'Facade\\Ignition\\SolutionProviders\\MissingPackageSolutionProvider' => __DIR__ . '/..' . '/facade/ignition/src/SolutionProviders/MissingPackageSolutionProvider.php',
         'Facade\\Ignition\\SolutionProviders\\RouteNotDefinedSolutionProvider' => __DIR__ . '/..' . '/facade/ignition/src/SolutionProviders/RouteNotDefinedSolutionProvider.php',
@@ -890,6 +901,7 @@ class ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9
         'Facade\\Ignition\\SolutionProviders\\UnknownValidationSolutionProvider' => __DIR__ . '/..' . '/facade/ignition/src/SolutionProviders/UnknownValidationSolutionProvider.php',
         'Facade\\Ignition\\SolutionProviders\\ViewNotFoundSolutionProvider' => __DIR__ . '/..' . '/facade/ignition/src/SolutionProviders/ViewNotFoundSolutionProvider.php',
         'Facade\\Ignition\\Solutions\\GenerateAppKeySolution' => __DIR__ . '/..' . '/facade/ignition/src/Solutions/GenerateAppKeySolution.php',
+        'Facade\\Ignition\\Solutions\\LivewireDiscoverSolution' => __DIR__ . '/..' . '/facade/ignition/src/Solutions/LivewireDiscoverSolution.php',
         'Facade\\Ignition\\Solutions\\MakeViewVariableOptionalSolution' => __DIR__ . '/..' . '/facade/ignition/src/Solutions/MakeViewVariableOptionalSolution.php',
         'Facade\\Ignition\\Solutions\\MissingPackageSolution' => __DIR__ . '/..' . '/facade/ignition/src/Solutions/MissingPackageSolution.php',
         'Facade\\Ignition\\Solutions\\RunMigrationsSolution' => __DIR__ . '/..' . '/facade/ignition/src/Solutions/RunMigrationsSolution.php',
@@ -1906,7 +1918,15 @@ class ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9
         'Illuminate\\Foundation\\Application' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Application.php',
         'Illuminate\\Foundation\\Auth\\Access\\Authorizable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/Access/Authorizable.php',
         'Illuminate\\Foundation\\Auth\\Access\\AuthorizesRequests' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/Access/AuthorizesRequests.php',
+        'Illuminate\\Foundation\\Auth\\AuthenticatesUsers' => __DIR__ . '/..' . '/laravel/ui/auth-backend/AuthenticatesUsers.php',
+        'Illuminate\\Foundation\\Auth\\ConfirmsPasswords' => __DIR__ . '/..' . '/laravel/ui/auth-backend/ConfirmsPasswords.php',
+        'Illuminate\\Foundation\\Auth\\RedirectsUsers' => __DIR__ . '/..' . '/laravel/ui/auth-backend/RedirectsUsers.php',
+        'Illuminate\\Foundation\\Auth\\RegistersUsers' => __DIR__ . '/..' . '/laravel/ui/auth-backend/RegistersUsers.php',
+        'Illuminate\\Foundation\\Auth\\ResetsPasswords' => __DIR__ . '/..' . '/laravel/ui/auth-backend/ResetsPasswords.php',
+        'Illuminate\\Foundation\\Auth\\SendsPasswordResetEmails' => __DIR__ . '/..' . '/laravel/ui/auth-backend/SendsPasswordResetEmails.php',
+        'Illuminate\\Foundation\\Auth\\ThrottlesLogins' => __DIR__ . '/..' . '/laravel/ui/auth-backend/ThrottlesLogins.php',
         'Illuminate\\Foundation\\Auth\\User' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/User.php',
+        'Illuminate\\Foundation\\Auth\\VerifiesEmails' => __DIR__ . '/..' . '/laravel/ui/auth-backend/VerifiesEmails.php',
         'Illuminate\\Foundation\\Bootstrap\\BootProviders' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php',
         'Illuminate\\Foundation\\Bootstrap\\HandleExceptions' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php',
         'Illuminate\\Foundation\\Bootstrap\\LoadConfiguration' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php',
@@ -2398,6 +2418,15 @@ class ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'Laravel\\Ui\\AuthCommand' => __DIR__ . '/..' . '/laravel/ui/src/AuthCommand.php',
+        'Laravel\\Ui\\AuthRouteMethods' => __DIR__ . '/..' . '/laravel/ui/src/AuthRouteMethods.php',
+        'Laravel\\Ui\\ControllersCommand' => __DIR__ . '/..' . '/laravel/ui/src/ControllersCommand.php',
+        'Laravel\\Ui\\Presets\\Bootstrap' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Bootstrap.php',
+        'Laravel\\Ui\\Presets\\Preset' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Preset.php',
+        'Laravel\\Ui\\Presets\\React' => __DIR__ . '/..' . '/laravel/ui/src/Presets/React.php',
+        'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
+        'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
+        'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
         'League\\CommonMark\\Block\\Element\\AbstractBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractBlock.php',
         'League\\CommonMark\\Block\\Element\\AbstractStringContainerBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractStringContainerBlock.php',
         'League\\CommonMark\\Block\\Element\\BlockQuote' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/BlockQuote.php',
@@ -4966,10 +4995,10 @@ class ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit41df2f0d7eddda86d8f9bbd1ff25bca9::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit01f80b6a3b82d2bb6292d3f3730ba54a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit01f80b6a3b82d2bb6292d3f3730ba54a::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit01f80b6a3b82d2bb6292d3f3730ba54a::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit01f80b6a3b82d2bb6292d3f3730ba54a::$classMap;
 
         }, null, ClassLoader::class);
     }

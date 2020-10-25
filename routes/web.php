@@ -14,10 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('welcome');
 });
 
+Auth::routes();
 
-// Route::get('loginpage2', 'LoginController@loginpage');
-
-// Route::get('login', 'LoginController@login');
+Route::get('/home', 'HomeController@index')->name('home');
