@@ -315,7 +315,7 @@
                       <img alt="Image placeholder" src="argon/assets/img/theme/manok-icon.png">
                     </span>
                     <div class="media-body  ml-2  d-none d-lg-block">
-                      <span class="mb-0 text-sm  font-weight-bold">Menard</span>
+                      <span class="mb-0 text-sm  font-weight-bold">Menard Gwapo</span>
                     </div>
                   </div>
                 </a>
