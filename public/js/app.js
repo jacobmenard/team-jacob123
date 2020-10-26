@@ -476,6 +476,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -990,6 +1006,46 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container-fluid mt--6" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xl-12" }, [
+          _c("div", { staticClass: "card card-stats" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "h5",
+                {
+                  staticClass:
+                    "card-title text-uppercase text-muted mb-0 d-block"
+                },
+                [_vm._v("Agent Registration Link")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mb-3" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    "aria-label": "Agent Registration Link",
+                    "aria-describedby": "basic-addon2",
+                    readonly: ""
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-primary",
+                      attrs: { type: "button" }
+                    },
+                    [_vm._v("Copy link")]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-xl-3 col-md-6" }, [
           _c("div", { staticClass: "card card-stats" }, [
