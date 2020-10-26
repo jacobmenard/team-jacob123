@@ -36,5 +36,6 @@
 @endsection --}}
 
 @section('content')
-    <dashboard-component></dashboard-component>
+    {{-- <dashboard-component></dashboard-component> --}}
+    <router-view></router-view>
 @endsection
