@@ -397,6 +397,20 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+             user: null
+        }
+    },
+    methods: {
+      getAuthenticated() {
+        axios.get('/api/user').then((res) => {
+            this.user = res.data;
+        })
+      }
+    },
+    mounted() {
+      this.getAuthenticated();
+    }
 }
 </script>
