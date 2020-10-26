@@ -1,7 +1,7 @@
 <template>
+
     <!-- Page content -->
       <div class="container-fluid mt--6">
-        
         <!-- Card stats -->
         <div class="row">
             <div class="col-xl-3 col-md-6">

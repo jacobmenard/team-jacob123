@@ -13,17 +13,16 @@
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                            {{ session('status') }}s
                     @endif
                         
-                    @if (Auth::user()->act_typ == 4)
+                    @if (Auth::user()->acc_type == 4)
                         <span>You log as Super Admin {{Auth::user()->username}}</span>
                     @elseif (Auth::user()->act_typ == 1)
                         <span>You log as Super Agent {{Auth::user()->username}}</span>
-                    @elseif (Auth::user()->act_typ == 2)
+                    @elseif (Auth::user()->acc_type == 2)
                         <span>You log as Agent {{Auth::user()->username}}</span>
-                    @elseif (Auth::user()->act_typ == 3)
+                    @elseif (Auth::user()->acc_type == 3)
                         <span>You log as Player {{Auth::user()->username}}</span>
                     @endif
 
@@ -36,5 +35,5 @@
 @endsection --}}
 
 @section('content')
-    <dashboard-component></dashboard-component>
+    <router-view></router-view>
 @endsection
