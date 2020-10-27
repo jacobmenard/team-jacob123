@@ -2280,6 +2280,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      user: null
+    };
+  },
+  methods: {
+    getAuthenticated: function getAuthenticated() {
+      var _this = this;
+
+      axios.get('/api/user').then(function (res) {
+        _this.user = res.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getAuthenticated();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoadStation.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LoadStation.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19994,6 +20034,880 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container-fluid mt--6" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _c("footer-component")
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xl-12" }, [
+        _c("div", { staticClass: "card card-stats" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "h5",
+              {
+                staticClass: "card-title text-uppercase text-muted mb-0 d-block"
+              },
+              [_vm._v("Agent Registration Link")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group mb-3" }, [
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  "aria-label": "Agent Registration Link",
+                  "aria-describedby": "basic-addon2",
+                  readonly: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group-append" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-primary",
+                    attrs: { type: "button" }
+                  },
+                  [_vm._v("Copy link")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xl-3 col-md-6" }, [
+        _c("div", { staticClass: "card card-stats" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col" }, [
+                _c(
+                  "h5",
+                  { staticClass: "card-title text-uppercase text-muted mb-0" },
+                  [_vm._v("Total Super Agents")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
+                  _vm._v("150")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-auto" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "icon icon-shape bg-gradient-red text-white rounded-circle shadow"
+                  },
+                  [_c("i", { staticClass: "ni ni-active-40" })]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "mt-3 mb-0 text-sm" }, [
+              _c("span", { staticClass: "text-success mr-2" }, [
+                _c("i", { staticClass: "fa fa-arrow-up" }),
+                _vm._v(" 3.48%")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-nowrap" }, [
+                _vm._v("Since last month")
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xl-3 col-md-6" }, [
+        _c("div", { staticClass: "card card-stats" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col" }, [
+                _c(
+                  "h5",
+                  { staticClass: "card-title text-uppercase text-muted mb-0" },
+                  [_vm._v("Running Sales")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
+                  _vm._v("25,356")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-auto" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
+                  },
+                  [_c("i", { staticClass: "ni ni-chart-pie-35" })]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "mt-3 mb-0 text-sm" }, [
+              _c("span", { staticClass: "text-success mr-2" }, [
+                _c("i", { staticClass: "fa fa-arrow-up" }),
+                _vm._v(" 3.48%")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-nowrap" }, [
+                _vm._v("Since last month")
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xl-3 col-md-6" }, [
+        _c("div", { staticClass: "card card-stats" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col" }, [
+                _c(
+                  "h5",
+                  { staticClass: "card-title text-uppercase text-muted mb-0" },
+                  [_vm._v("Agent Load Deposit")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
+                  _vm._v("10,000")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-auto" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "icon icon-shape bg-gradient-green text-white rounded-circle shadow"
+                  },
+                  [_c("i", { staticClass: "ni ni-money-coins" })]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "mt-3 mb-0 text-sm" }, [
+              _c("span", { staticClass: "text-success mr-2" }, [
+                _c("i", { staticClass: "fa fa-arrow-up" }),
+                _vm._v(" 3.48%")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-nowrap" }, [
+                _vm._v("Since last month")
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xl-3 col-md-6" }, [
+        _c("div", { staticClass: "card card-stats" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col" }, [
+                _c(
+                  "h5",
+                  { staticClass: "card-title text-uppercase text-muted mb-0" },
+                  [_vm._v("Agent Widrawal")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
+                  _vm._v("9,000")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-auto" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "icon icon-shape bg-gradient-info text-white rounded-circle shadow"
+                  },
+                  [_c("i", { staticClass: "ni ni-chart-bar-32" })]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "mt-3 mb-0 text-sm" }, [
+              _c("span", { staticClass: "text-success mr-2" }, [
+                _c("i", { staticClass: "fa fa-arrow-up" }),
+                _vm._v(" 3.48%")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-nowrap" }, [
+                _vm._v("Since last month")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xl-8" }, [
+        _c("div", { staticClass: "card bg-default" }, [
+          _c("div", { staticClass: "card-header bg-transparent" }, [
+            _c("div", { staticClass: "row align-items-center" }, [
+              _c("div", { staticClass: "col" }, [
+                _c(
+                  "h6",
+                  { staticClass: "text-light text-uppercase ls-1 mb-1" },
+                  [_vm._v("Overview")]
+                ),
+                _vm._v(" "),
+                _c("h5", { staticClass: "h3 text-white mb-0" }, [
+                  _vm._v("Sales as of Dec 1 - 31 2020")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("ul", { staticClass: "nav nav-pills justify-content-end" }, [
+                  _c(
+                    "li",
+                    {
+                      staticClass: "nav-item mr-2 mr-md-0",
+                      attrs: {
+                        "data-toggle": "chart",
+                        "data-target": "#chart-sales-dark",
+                        "data-update":
+                          '{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}',
+                        "data-prefix": "$",
+                        "data-suffix": "k"
+                      }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "nav-link py-2 px-3 active",
+                          attrs: { href: "#", "data-toggle": "tab" }
+                        },
+                        [
+                          _c("span", { staticClass: "d-none d-md-block" }, [
+                            _vm._v("Month")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "d-md-none" }, [
+                            _vm._v("M")
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "nav-item",
+                      attrs: {
+                        "data-toggle": "chart",
+                        "data-target": "#chart-sales-dark",
+                        "data-update":
+                          '{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}',
+                        "data-prefix": "$",
+                        "data-suffix": "k"
+                      }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "nav-link py-2 px-3",
+                          attrs: { href: "#", "data-toggle": "tab" }
+                        },
+                        [
+                          _c("span", { staticClass: "d-none d-md-block" }, [
+                            _vm._v("Week")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "d-md-none" }, [
+                            _vm._v("W")
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "chart" }, [
+              _c("canvas", {
+                staticClass: "chart-canvas",
+                attrs: { id: "chart-sales-dark" }
+              })
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xl-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header border-0" }, [
+            _c("div", { staticClass: "row align-items-center" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("h3", { staticClass: "mb-0" }, [
+                  _vm._v("Top Agent Load Deposit")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col text-right" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-sm btn-primary",
+                    attrs: { href: "#!" }
+                  },
+                  [_vm._v("See all")]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "table-responsive" }, [
+            _c(
+              "table",
+              { staticClass: "table align-items-center table-flush" },
+              [
+                _c("thead", { staticClass: "thead-light" }, [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Agent")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Deposited")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(
+                        "\n                    Sabonger1\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    1,480\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "d-flex align-items-center" }, [
+                        _c("span", { staticClass: "mr-2" }, [_vm._v("60%")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("div", { staticClass: "progress" }, [
+                            _c("div", {
+                              staticClass: "progress-bar bg-gradient-danger",
+                              staticStyle: { width: "60%" },
+                              attrs: {
+                                role: "progressbar",
+                                "aria-valuenow": "60",
+                                "aria-valuemin": "0",
+                                "aria-valuemax": "100"
+                              }
+                            })
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(
+                        "\n                    Sabonger2\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    5,480\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "d-flex align-items-center" }, [
+                        _c("span", { staticClass: "mr-2" }, [_vm._v("70%")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("div", { staticClass: "progress" }, [
+                            _c("div", {
+                              staticClass: "progress-bar bg-gradient-success",
+                              staticStyle: { width: "70%" },
+                              attrs: {
+                                role: "progressbar",
+                                "aria-valuenow": "70",
+                                "aria-valuemin": "0",
+                                "aria-valuemax": "100"
+                              }
+                            })
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(
+                        "\n                    Sabongero150\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    4,807\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "d-flex align-items-center" }, [
+                        _c("span", { staticClass: "mr-2" }, [_vm._v("80%")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("div", { staticClass: "progress" }, [
+                            _c("div", {
+                              staticClass: "progress-bar bg-gradient-primary",
+                              staticStyle: { width: "80%" },
+                              attrs: {
+                                role: "progressbar",
+                                "aria-valuenow": "80",
+                                "aria-valuemin": "0",
+                                "aria-valuemax": "100"
+                              }
+                            })
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(
+                        "\n                    Sabonger3\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    3,678\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "d-flex align-items-center" }, [
+                        _c("span", { staticClass: "mr-2" }, [_vm._v("75%")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("div", { staticClass: "progress" }, [
+                            _c("div", {
+                              staticClass: "progress-bar bg-gradient-info",
+                              staticStyle: { width: "75%" },
+                              attrs: {
+                                role: "progressbar",
+                                "aria-valuenow": "75",
+                                "aria-valuemin": "0",
+                                "aria-valuemax": "100"
+                              }
+                            })
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(
+                        "\n                    Sabonger4\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    2,645\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "d-flex align-items-center" }, [
+                        _c("span", { staticClass: "mr-2" }, [_vm._v("30%")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("div", { staticClass: "progress" }, [
+                            _c("div", {
+                              staticClass: "progress-bar bg-gradient-warning",
+                              staticStyle: { width: "30%" },
+                              attrs: {
+                                role: "progressbar",
+                                "aria-valuenow": "30",
+                                "aria-valuemin": "0",
+                                "aria-valuemax": "100"
+                              }
+                            })
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xl-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header border-0" }, [
+            _c("div", { staticClass: "row align-items-center" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("h3", { staticClass: "mb-0" }, [_vm._v("Agent's List")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col text-right" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-sm btn-primary",
+                    attrs: { href: "#!" }
+                  },
+                  [_vm._v("See all")]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "table-responsive" }, [
+            _c(
+              "table",
+              { staticClass: "table align-items-center table-flush" },
+              [
+                _c("thead", { staticClass: "thead-light" }, [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Page name")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Visitors")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Unique users")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Bounce rate")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(
+                        "\n                    /argon/\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    4,569\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    340\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("i", {
+                        staticClass: "fas fa-arrow-up text-success mr-3"
+                      }),
+                      _vm._v(" 46,53%\n                  ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(
+                        "\n                    /argon/index.html\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    3,985\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    319\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("i", {
+                        staticClass: "fas fa-arrow-down text-warning mr-3"
+                      }),
+                      _vm._v(" 46,53%\n                  ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(
+                        "\n                    /argon/charts.html\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    3,513\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    294\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("i", {
+                        staticClass: "fas fa-arrow-down text-warning mr-3"
+                      }),
+                      _vm._v(" 36,49%\n                  ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(
+                        "\n                    /argon/tables.html\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    2,050\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    147\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("i", {
+                        staticClass: "fas fa-arrow-up text-success mr-3"
+                      }),
+                      _vm._v(" 50,87%\n                  ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(
+                        "\n                    /argon/profile.html\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    1,795\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("\n                    190\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("i", {
+                        staticClass: "fas fa-arrow-down text-danger mr-3"
+                      }),
+                      _vm._v(" 46,53%\n                  ")
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Footer.vue?vue&type=template&id=61a7c374&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Footer.vue?vue&type=template&id=61a7c374& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "footer pt-0" }, [
+      _c(
+        "div",
+        { staticClass: "row align-items-center justify-content-lg-between" },
+        [
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c(
+              "div",
+              {
+                staticClass: "copyright text-center  text-lg-left  text-muted"
+              },
+              [
+                _vm._v("\n        © 2020 "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "font-weight-bold ml-1",
+                    attrs: {
+                      href: "https://www.creative-tim.com",
+                      target: "_blank"
+                    }
+                  },
+                  [_vm._v("Saltzpro")]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c(
+              "ul",
+              {
+                staticClass:
+                  "nav nav-footer justify-content-center justify-content-lg-end"
+              },
+              [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: {
+                        href: "https://www.creative-tim.com",
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("Creative Tim")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "nav-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: {
+                        href: "https://www.creative-tim.com/presentation",
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("About Us")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "nav-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: {
+                        href: "http://blog.creative-tim.com",
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("Blog")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "nav-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: {
+                        href:
+                          "https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md",
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("MIT License")]
+                  )
+                ])
+              ]
+            )
+          ])
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoadStation.vue?vue&type=template&id=5e5b8d5a&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LoadStation.vue?vue&type=template&id=5e5b8d5a& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
 }
 var staticRenderFns = [
@@ -20045,819 +20959,9 @@ var staticRenderFns = [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-xl-3 col-md-6" }, [
           _c("div", { staticClass: "card card-stats" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c(
-                    "h5",
-                    {
-                      staticClass: "card-title text-uppercase text-muted mb-0"
-                    },
-                    [_vm._v("Total Super Agents")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
-                    _vm._v("150")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-auto" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "icon icon-shape bg-gradient-red text-white rounded-circle shadow"
-                    },
-                    [_c("i", { staticClass: "ni ni-active-40" })]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "mt-3 mb-0 text-sm" }, [
-                _c("span", { staticClass: "text-success mr-2" }, [
-                  _c("i", { staticClass: "fa fa-arrow-up" }),
-                  _vm._v(" 3.48%")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-nowrap" }, [
-                  _vm._v("Since last month")
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-3 col-md-6" }, [
-          _c("div", { staticClass: "card card-stats" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c(
-                    "h5",
-                    {
-                      staticClass: "card-title text-uppercase text-muted mb-0"
-                    },
-                    [_vm._v("Running Sales")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
-                    _vm._v("25,356")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-auto" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
-                    },
-                    [_c("i", { staticClass: "ni ni-chart-pie-35" })]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "mt-3 mb-0 text-sm" }, [
-                _c("span", { staticClass: "text-success mr-2" }, [
-                  _c("i", { staticClass: "fa fa-arrow-up" }),
-                  _vm._v(" 3.48%")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-nowrap" }, [
-                  _vm._v("Since last month")
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-3 col-md-6" }, [
-          _c("div", { staticClass: "card card-stats" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c(
-                    "h5",
-                    {
-                      staticClass: "card-title text-uppercase text-muted mb-0"
-                    },
-                    [_vm._v("Agent Load Deposit")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
-                    _vm._v("10,000")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-auto" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "icon icon-shape bg-gradient-green text-white rounded-circle shadow"
-                    },
-                    [_c("i", { staticClass: "ni ni-money-coins" })]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "mt-3 mb-0 text-sm" }, [
-                _c("span", { staticClass: "text-success mr-2" }, [
-                  _c("i", { staticClass: "fa fa-arrow-up" }),
-                  _vm._v(" 3.48%")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-nowrap" }, [
-                  _vm._v("Since last month")
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-3 col-md-6" }, [
-          _c("div", { staticClass: "card card-stats" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c(
-                    "h5",
-                    {
-                      staticClass: "card-title text-uppercase text-muted mb-0"
-                    },
-                    [_vm._v("Agent Widrawal")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
-                    _vm._v("9,000")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-auto" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "icon icon-shape bg-gradient-info text-white rounded-circle shadow"
-                    },
-                    [_c("i", { staticClass: "ni ni-chart-bar-32" })]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "mt-3 mb-0 text-sm" }, [
-                _c("span", { staticClass: "text-success mr-2" }, [
-                  _c("i", { staticClass: "fa fa-arrow-up" }),
-                  _vm._v(" 3.48%")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-nowrap" }, [
-                  _vm._v("Since last month")
-                ])
-              ])
-            ])
+            _c("div", { staticClass: "card-body" })
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xl-8" }, [
-          _c("div", { staticClass: "card bg-default" }, [
-            _c("div", { staticClass: "card-header bg-transparent" }, [
-              _c("div", { staticClass: "row align-items-center" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c(
-                    "h6",
-                    { staticClass: "text-light text-uppercase ls-1 mb-1" },
-                    [_vm._v("Overview")]
-                  ),
-                  _vm._v(" "),
-                  _c("h5", { staticClass: "h3 text-white mb-0" }, [
-                    _vm._v("Sales as of Dec 1 - 31 2020")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col" }, [
-                  _c(
-                    "ul",
-                    { staticClass: "nav nav-pills justify-content-end" },
-                    [
-                      _c(
-                        "li",
-                        {
-                          staticClass: "nav-item mr-2 mr-md-0",
-                          attrs: {
-                            "data-toggle": "chart",
-                            "data-target": "#chart-sales-dark",
-                            "data-update":
-                              '{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}',
-                            "data-prefix": "$",
-                            "data-suffix": "k"
-                          }
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "nav-link py-2 px-3 active",
-                              attrs: { href: "#", "data-toggle": "tab" }
-                            },
-                            [
-                              _c("span", { staticClass: "d-none d-md-block" }, [
-                                _vm._v("Month")
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "d-md-none" }, [
-                                _vm._v("M")
-                              ])
-                            ]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "li",
-                        {
-                          staticClass: "nav-item",
-                          attrs: {
-                            "data-toggle": "chart",
-                            "data-target": "#chart-sales-dark",
-                            "data-update":
-                              '{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}',
-                            "data-prefix": "$",
-                            "data-suffix": "k"
-                          }
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "nav-link py-2 px-3",
-                              attrs: { href: "#", "data-toggle": "tab" }
-                            },
-                            [
-                              _c("span", { staticClass: "d-none d-md-block" }, [
-                                _vm._v("Week")
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "d-md-none" }, [
-                                _vm._v("W")
-                              ])
-                            ]
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "chart" }, [
-                _c("canvas", {
-                  staticClass: "chart-canvas",
-                  attrs: { id: "chart-sales-dark" }
-                })
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-4" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header border-0" }, [
-              _c("div", { staticClass: "row align-items-center" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c("h3", { staticClass: "mb-0" }, [
-                    _vm._v("Top Agent Load Deposit")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col text-right" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-sm btn-primary",
-                      attrs: { href: "#!" }
-                    },
-                    [_vm._v("See all")]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "table-responsive" }, [
-              _c(
-                "table",
-                { staticClass: "table align-items-center table-flush" },
-                [
-                  _c("thead", { staticClass: "thead-light" }, [
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "col" } }, [_vm._v("Agent")]),
-                      _vm._v(" "),
-                      _c("th", { attrs: { scope: "col" } }, [
-                        _vm._v("Deposited")
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { attrs: { scope: "col" } })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(
-                          "\n                    Sabonger1\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    1,480\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          { staticClass: "d-flex align-items-center" },
-                          [
-                            _c("span", { staticClass: "mr-2" }, [
-                              _vm._v("60%")
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _c("div", { staticClass: "progress" }, [
-                                _c("div", {
-                                  staticClass:
-                                    "progress-bar bg-gradient-danger",
-                                  staticStyle: { width: "60%" },
-                                  attrs: {
-                                    role: "progressbar",
-                                    "aria-valuenow": "60",
-                                    "aria-valuemin": "0",
-                                    "aria-valuemax": "100"
-                                  }
-                                })
-                              ])
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(
-                          "\n                    Sabonger2\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    5,480\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          { staticClass: "d-flex align-items-center" },
-                          [
-                            _c("span", { staticClass: "mr-2" }, [
-                              _vm._v("70%")
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _c("div", { staticClass: "progress" }, [
-                                _c("div", {
-                                  staticClass:
-                                    "progress-bar bg-gradient-success",
-                                  staticStyle: { width: "70%" },
-                                  attrs: {
-                                    role: "progressbar",
-                                    "aria-valuenow": "70",
-                                    "aria-valuemin": "0",
-                                    "aria-valuemax": "100"
-                                  }
-                                })
-                              ])
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(
-                          "\n                    Sabongero150\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    4,807\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          { staticClass: "d-flex align-items-center" },
-                          [
-                            _c("span", { staticClass: "mr-2" }, [
-                              _vm._v("80%")
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _c("div", { staticClass: "progress" }, [
-                                _c("div", {
-                                  staticClass:
-                                    "progress-bar bg-gradient-primary",
-                                  staticStyle: { width: "80%" },
-                                  attrs: {
-                                    role: "progressbar",
-                                    "aria-valuenow": "80",
-                                    "aria-valuemin": "0",
-                                    "aria-valuemax": "100"
-                                  }
-                                })
-                              ])
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(
-                          "\n                    Sabonger3\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    3,678\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          { staticClass: "d-flex align-items-center" },
-                          [
-                            _c("span", { staticClass: "mr-2" }, [
-                              _vm._v("75%")
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _c("div", { staticClass: "progress" }, [
-                                _c("div", {
-                                  staticClass: "progress-bar bg-gradient-info",
-                                  staticStyle: { width: "75%" },
-                                  attrs: {
-                                    role: "progressbar",
-                                    "aria-valuenow": "75",
-                                    "aria-valuemin": "0",
-                                    "aria-valuemax": "100"
-                                  }
-                                })
-                              ])
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(
-                          "\n                    Sabonger4\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    2,645\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          { staticClass: "d-flex align-items-center" },
-                          [
-                            _c("span", { staticClass: "mr-2" }, [
-                              _vm._v("30%")
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _c("div", { staticClass: "progress" }, [
-                                _c("div", {
-                                  staticClass:
-                                    "progress-bar bg-gradient-warning",
-                                  staticStyle: { width: "30%" },
-                                  attrs: {
-                                    role: "progressbar",
-                                    "aria-valuenow": "30",
-                                    "aria-valuemin": "0",
-                                    "aria-valuemax": "100"
-                                  }
-                                })
-                              ])
-                            ])
-                          ]
-                        )
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xl-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header border-0" }, [
-              _c("div", { staticClass: "row align-items-center" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c("h3", { staticClass: "mb-0" }, [_vm._v("Agent's List")])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col text-right" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-sm btn-primary",
-                      attrs: { href: "#!" }
-                    },
-                    [_vm._v("See all")]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "table-responsive" }, [
-              _c(
-                "table",
-                { staticClass: "table align-items-center table-flush" },
-                [
-                  _c("thead", { staticClass: "thead-light" }, [
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "col" } }, [
-                        _vm._v("Page name")
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { attrs: { scope: "col" } }, [
-                        _vm._v("Visitors")
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { attrs: { scope: "col" } }, [
-                        _vm._v("Unique users")
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { attrs: { scope: "col" } }, [
-                        _vm._v("Bounce rate")
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(
-                          "\n                    /argon/\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    4,569\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v("\n                    340\n                  ")
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("i", {
-                          staticClass: "fas fa-arrow-up text-success mr-3"
-                        }),
-                        _vm._v(" 46,53%\n                  ")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(
-                          "\n                    /argon/index.html\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    3,985\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v("\n                    319\n                  ")
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("i", {
-                          staticClass: "fas fa-arrow-down text-warning mr-3"
-                        }),
-                        _vm._v(" 46,53%\n                  ")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(
-                          "\n                    /argon/charts.html\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    3,513\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v("\n                    294\n                  ")
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("i", {
-                          staticClass: "fas fa-arrow-down text-warning mr-3"
-                        }),
-                        _vm._v(" 36,49%\n                  ")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(
-                          "\n                    /argon/tables.html\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    2,050\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v("\n                    147\n                  ")
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("i", {
-                          staticClass: "fas fa-arrow-up text-success mr-3"
-                        }),
-                        _vm._v(" 50,87%\n                  ")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(
-                          "\n                    /argon/profile.html\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    1,795\n                  "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v("\n                    190\n                  ")
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("i", {
-                          staticClass: "fas fa-arrow-down text-danger mr-3"
-                        }),
-                        _vm._v(" 46,53%\n                  ")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("footer", { staticClass: "footer pt-0" }, [
-        _c(
-          "div",
-          { staticClass: "row align-items-center justify-content-lg-between" },
-          [
-            _c("div", { staticClass: "col-lg-6" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "copyright text-center  text-lg-left  text-muted"
-                },
-                [
-                  _vm._v("\n            © 2020 "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "font-weight-bold ml-1",
-                      attrs: {
-                        href: "https://www.creative-tim.com",
-                        target: "_blank"
-                      }
-                    },
-                    [_vm._v("Creative Tim")]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-6" }, [
-              _c(
-                "ul",
-                {
-                  staticClass:
-                    "nav nav-footer justify-content-center justify-content-lg-end"
-                },
-                [
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "nav-link",
-                        attrs: {
-                          href: "https://www.creative-tim.com",
-                          target: "_blank"
-                        }
-                      },
-                      [_vm._v("Creative Tim")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "nav-link",
-                        attrs: {
-                          href: "https://www.creative-tim.com/presentation",
-                          target: "_blank"
-                        }
-                      },
-                      [_vm._v("About Us")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "nav-link",
-                        attrs: {
-                          href: "http://blog.creative-tim.com",
-                          target: "_blank"
-                        }
-                      },
-                      [_vm._v("Blog")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "nav-link",
-                        attrs: {
-                          href:
-                            "https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md",
-                          target: "_blank"
-                        }
-                      },
-                      [_vm._v("MIT License")]
-                    )
-                  ])
-                ]
-              )
-            ])
-          ]
-        )
       ])
     ])
   }
@@ -36159,6 +36263,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
+Vue.component('footer-component', __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]);
 var app = new Vue({
   el: '#app',
   router: new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"](_routes__WEBPACK_IMPORTED_MODULE_1__["default"])
@@ -36273,6 +36378,128 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Footer.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Footer.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Footer.vue?vue&type=template&id=61a7c374& */ "./resources/js/components/Footer.vue?vue&type=template&id=61a7c374&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Footer.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Footer.vue?vue&type=template&id=61a7c374&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Footer.vue?vue&type=template&id=61a7c374& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Footer.vue?vue&type=template&id=61a7c374& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Footer.vue?vue&type=template&id=61a7c374&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/LoadStation.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/LoadStation.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LoadStation_vue_vue_type_template_id_5e5b8d5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoadStation.vue?vue&type=template&id=5e5b8d5a& */ "./resources/js/components/LoadStation.vue?vue&type=template&id=5e5b8d5a&");
+/* harmony import */ var _LoadStation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoadStation.vue?vue&type=script&lang=js& */ "./resources/js/components/LoadStation.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _LoadStation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LoadStation_vue_vue_type_template_id_5e5b8d5a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LoadStation_vue_vue_type_template_id_5e5b8d5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/LoadStation.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/LoadStation.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/LoadStation.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LoadStation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./LoadStation.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoadStation.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LoadStation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/LoadStation.vue?vue&type=template&id=5e5b8d5a&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/LoadStation.vue?vue&type=template&id=5e5b8d5a& ***!
+  \********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoadStation_vue_vue_type_template_id_5e5b8d5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./LoadStation.vue?vue&type=template&id=5e5b8d5a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoadStation.vue?vue&type=template&id=5e5b8d5a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoadStation_vue_vue_type_template_id_5e5b8d5a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoadStation_vue_vue_type_template_id_5e5b8d5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/NotFound.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/NotFound.vue ***!
@@ -36353,7 +36580,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NotFound__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue");
 /* harmony import */ var _components_Dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Dashboard */ "./resources/js/components/Dashboard.vue");
+/* harmony import */ var _components_LoadStation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/LoadStation */ "./resources/js/components/LoadStation.vue");
  // import Register from './components/Register';
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -36379,6 +36608,10 @@ __webpack_require__.r(__webpack_exports__);
     path: '/home',
     component: _components_Dashboard__WEBPACK_IMPORTED_MODULE_1__["default"],
     name: "Dashboard"
+  }, {
+    path: '/LoadStation',
+    component: _components_LoadStation__WEBPACK_IMPORTED_MODULE_2__["default"],
+    name: "LoadStation"
   }]
 });
 
