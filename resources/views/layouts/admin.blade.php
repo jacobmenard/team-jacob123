@@ -34,19 +34,24 @@
           <!-- Collapse -->
           <div class="collapse navbar-collapse" id="sidenav-collapse-main">
             <!-- Nav items -->
+            <route-link to='/home'>Dashboard</route-link>
+            <route-link to='/LoadStation'>Load Station</route-link>
             <ul class="navbar-nav">
+              
               <li class="nav-item">
-                <a class="nav-link active" href="dashboard.html">
+                <a class="nav-link" to='/home'>
                   <i class="ni ni-tv-2 text-primary"></i>
                   <span class="nav-link-text">Dashboard</span>
                 </a>
               </li>
+
               <li class="nav-item">
-                <a class="nav-link" href="icons.html">
+                <a class="nav-link" to='/LoadStation'>
                   <i class="ni ni-planet text-orange"></i>
-                  <span class="nav-link-text">Icons</span>
+                  <span class="nav-link-text">Loading Station</span>
                 </a>
               </li>
+              
               <li class="nav-item">
                 <a class="nav-link" href="map.html">
                   <i class="ni ni-pin-3 text-primary"></i>
@@ -84,6 +89,7 @@
                 </a>
               </li>
             </ul>
+            
             <!-- Divider -->
             <hr class="my-3">
             <!-- Heading -->
@@ -379,7 +385,7 @@
       </div>
       
         <div id="app">
-            @yield('content')
+          @yield('content')
         </div>
     </div>
   </div>
