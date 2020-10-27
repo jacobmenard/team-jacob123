@@ -35,5 +35,7 @@
 @endsection --}}
 
 @section('content')
+{{-- <router-link to='/home'>Dashboard</router-link>
+<router-link to='/LoadStation'>Load Station</router-link><br><br><br><br> --}}
     <router-view></router-view>
 @endsection
