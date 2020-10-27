@@ -381,6 +381,15 @@
 
 <script>
 export default {
-    
+    data(){
+      return{
+        user: null
+      }
+    },
+    mounted(){
+      axios.get('/api/user').then((response) =>{
+        this.user = response.data
+      })
+    }
 }
 </script>
