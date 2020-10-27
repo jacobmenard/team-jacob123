@@ -1,7 +1,8 @@
 
 import NotFound from './components/NotFound';
 // import Register from './components/Register';
- import Dashboard from './components/Dashboard';
+import Dashboard from './components/Dashboard';
+import LoadStation from './components/LoadStation';
 
 
 export default{
@@ -29,6 +30,13 @@ export default{
             path: '/home',
             component: Dashboard,
             name: "Dashboard"
+        }
+
+        ,
+        {
+            path: '/LoadStation',
+            component: LoadStation,
+            name: "LoadStation"
         }
     ]
 }
