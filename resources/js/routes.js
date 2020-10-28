@@ -26,15 +26,15 @@ export default{
         //     path: '/register',
         //     component: Register
         // },
+
         {
-            path: '/home',
+            path: '/pages/dashboard',
             component: Dashboard,
             name: "Dashboard"
-        }
-
-        ,
+        },
+        
         {
-            path: '/LoadStation',
+            path: '/pages/loadstation',
             component: LoadStation,
             name: "LoadStation"
         }

@@ -6,12 +6,12 @@
         <div class="row">
           <div class="col-xl-12">
             <div class="card card-stats">
-              <div class="card-body">
+              <div class="card-body" v-if="user.acc_type == 1 || user.acc_type ==  2">
                 <h5 class="card-title text-uppercase text-muted mb-0 d-block">Agent Registration Link</h5>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" aria-label="Agent Registration Link" aria-describedby="basic-addon2" readonly>
+                  <input type="text" class="form-control" aria-label="Agent Registration Link" v-model="userUrl" aria-describedby="basic-addon2" >
                   <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="button">Copy link</button>
+                    <button class="btn btn-outline-primary" type="button" @click.prevent="copyUrl">Copy link</button>
                   </div>
                 </div>
               </div>
@@ -371,18 +371,31 @@
 </template>
 
 <script>
+
 export default {
+  
     data() {
         return {
-             user: null
+             user: null,
+             userUrl: '',
         }
     },
     methods: {
       getAuthenticated() {
         axios.get('/api/user').then((res) => {
             this.user = res.data;
+             let baseurl = "http://127.0.0.1:8000" //process.env.MIX_BASE_URL;
+            let rnd=  String.fromCharCode(
+                      Math.floor(Math.random() * 26) + 97) +
+                      Math.random().toString(36).substring(2, 15) +
+                      Math.random().toString(36).substring(2, 15);
+            this.userUrl = baseurl + "/register/"+this.user.id+rnd+"/"+(this.user.acc_type ==2? 3: this.user.acc_type == 1? 2:'');
+            console.log(this.userUrl);
         })
-      }
+      },
+      copyUrl () {
+          navigator.clipboard.writeText(this.userUrl);
+        }
     },
     mounted() {
       this.getAuthenticated();

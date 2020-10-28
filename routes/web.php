@@ -17,12 +17,20 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('/home', function () {
+Route::get('/pages/{any}', function () {
     return view('home');
+})->where('any','.*');
+
+Route::get('/register/{id}/{acc_type}', function () {
+    return view('auth/register');
 });
+
+// Route::get('/loadstation', function () {
+//     return view('home');
+// });
 
 
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
