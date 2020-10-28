@@ -17,12 +17,18 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
-
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
 
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/pages/{any}', function() {
+    return view('home');
+})->where('any', '.*');
+
+
+Route::get('/sa/get/getAgentList', 'AgentController@getAgentList');

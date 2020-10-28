@@ -1,7 +1,4 @@
 @extends('layouts.admin')
-@section('pagename')
-    Dashboard
-@endsection
 
 {{-- @section('content')
 <div class="container">
