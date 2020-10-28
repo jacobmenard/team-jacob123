@@ -40,7 +40,7 @@ class User extends Authenticatable
     ];
 
     public function accountType() {
-        return $this->
+        // return $this->
     }
 
 }
