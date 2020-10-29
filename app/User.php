@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'acc_type',
+        'name', 'username', 'email', 'password', 'acc_type','acc_inv','acc_fb_link'
     ];
 
     /**
@@ -38,5 +38,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function accountType(){
+        return $this->hasOne('App\AccountType', 'type_no','acc_type');
+    }
+   
+
 
 }

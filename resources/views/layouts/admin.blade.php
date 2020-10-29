@@ -38,14 +38,14 @@
             <ul class="navbar-nav">
               
               <li class="nav-item">
-                <router-link class="nav-link" to='/home'>
+                <router-link class="nav-link" to='/pages/dashboard'>
                   <i class="ni ni-tv-2 text-primary"></i>
                   <span class="nav-link-text">Dashboard</span>
                 </router-link>
               </li>
 
               <li class="nav-item">
-                <router-link class="nav-link" to='/LoadStation'>
+                <router-link class="nav-link" to='/pages/loadstation'>
                   <i class="ni ni-tv-2 text-primary"></i>
                   <span class="nav-link-text">Load Station</span>
                 </router-link>
