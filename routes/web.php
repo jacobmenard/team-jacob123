@@ -33,4 +33,6 @@ Route::get('/register/{id}/{acc_type}', function () {
 
 Auth::routes();
 
+Route::get('/sa/post/updateAgentStatus/{id}/{stat}', 'AgentController@updateStatus');
+Route::get('/sa/get/getAgentList', 'AgentController@getAgentList');
 //Route::get('/home', 'HomeController@index')->name('home');

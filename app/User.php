@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'acc_type','acc_inv','acc_fb_link'
+        'name', 'username', 'email', 'password', 'acc_type', 'acc_percentage', 'acc_stat','acc_inv','acc_fb_link'
     ];
 
     /**
@@ -39,10 +39,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function accountType(){
-        return $this->hasOne('App\AccountType', 'type_no','acc_type');
+    public function accountType() {
+        return $this->hasOne('App\RefAccType', 'type_no', 'acc_type');
     }
-   
 
+    public function accoutPoints() {
+        return $this->hasOne('App\TblAccPoints', 'pt_acc');
+    }
+    
 
 }
