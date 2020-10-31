@@ -59,14 +59,14 @@
                       <th>{{agent.username}}</th>
                       <td>{{agent.email}}</td>
                       <th class="text-center">{{agent.acc_percentage}}</th>
-                      <th class="text-right">{{ agent.acc_load | numeral('0,0.00') }}</th>
+                      <th class="text-right">{{ agent.accout_points.acc_load | numeral('0,0.00') }}</th>
                       <td>
                         <span class="badge badge-pill badge-success" v-if="agent.acc_stat == 'ACTIVE'">{{agent.acc_stat}}</span>
                         <span class="badge badge-pill badge-danger" v-if="agent.acc_stat == 'INACTIVE'">{{agent.acc_stat}}</span>
                       </td>
                       <td>
-                        <a href="#" class="btn btn-sm btn-danger d-inline-block text-uppercase" v-if="agent.acc_stat == 'ACTIVE'">Inactive</a>
-                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" v-if="agent.acc_stat == 'INACTIVE'">Activate</a>
+                        <a href="#" class="btn btn-sm btn-danger d-inline-block text-uppercase" v-on:click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'ACTIVE'">Inactive</a>
+                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" v-on:click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'INACTIVE'">Activate</a>
                         <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase">Load Transfer</a>
                         <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase">Update Percentage</a>
                       </td>
@@ -87,7 +87,8 @@
 export default {
     data() {
         return {
-          agents: null
+          agents: null,
+          message: null
         }
     },
     methods: {
@@ -97,11 +98,37 @@ export default {
         }).catch(() => {
           console.log(error);
         })
+      },
+      changeUserStatus($id, $status) {
+        var msg = ($status == 'ACTIVE' ? 'inactive' : 'activate')
+        swal({
+          title: "Status alert",
+          text: "Are you sure to " + msg + " selected agent?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((updateStat) => {
+          if (updateStat) {
+            axios.get('/sa/post/updateAgentStatus/' + $id + '/' + $status).then((res) => {
+              this.message = 'Successfully ' + $status;
+              
+              swal('Agent has bees successfully ' + msg, {
+                icon: 'success'
+              })
+
+              this.getAgent()
+            }).catch(() => {
+              this.message = error;
+            })
+
+          }
+        })
       }
     },
     mounted() {
       this.getAgent();
-    },
+    }
 }
 
   

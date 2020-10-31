@@ -30,5 +30,5 @@ Route::get('/pages/{any}', function() {
     return view('home');
 })->where('any', '.*');
 
-
+Route::get('/sa/post/updateAgentStatus/{id}/{stat}', 'AgentController@updateStatus');
 Route::get('/sa/get/getAgentList', 'AgentController@getAgentList');

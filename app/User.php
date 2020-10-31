@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'acc_type',
+        'name', 'username', 'email', 'password', 'acc_type', 'acc_percentage', 'acc_stat'
     ];
 
     /**
@@ -40,7 +40,12 @@ class User extends Authenticatable
     ];
 
     public function accountType() {
-        // return $this->
+        return $this->hasOne('App\RefAccType', 'type_no', 'acc_type');
     }
+
+    public function accoutPoints() {
+        return $this->hasOne('App\TblAccPoints', 'pt_acc');
+    }
+
 
 }

@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "numeral": "^2.0.6",
+        "sweetalert": "^2.1.2",
         "vue-numeral-filter": "^2.0.0",
         "vue-router": "^3.4.8"
     }
