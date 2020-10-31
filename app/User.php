@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'acc_type', 'acc_percentage', 'acc_stat'
+        'name', 'username', 'email', 'password', 'acc_type', 'acc_percentage', 'acc_stat','acc_inv','acc_fb_link'
     ];
 
     /**
@@ -46,6 +46,6 @@ class User extends Authenticatable
     public function accoutPoints() {
         return $this->hasOne('App\TblAccPoints', 'pt_acc');
     }
-
+    
 
 }

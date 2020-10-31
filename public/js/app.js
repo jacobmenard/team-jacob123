@@ -2309,7 +2309,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       user: null,
-      pagename: ''
+      userUrl: ''
     };
   },
   methods: {
@@ -2318,7 +2318,15 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/user').then(function (res) {
         _this.user = res.data;
+        var baseurl = "http://127.0.0.1:8000"; //process.env.MIX_BASE_URL;
+
+        var rnd = String.fromCharCode(Math.floor(Math.random() * 26) + 97) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        _this.userUrl = baseurl + "/register/" + _this.user.id + rnd + "/" + (_this.user.acc_type == 2 ? 3 : _this.user.acc_type == 1 ? 2 : '');
+        console.log(_this.userUrl);
       });
+    },
+    copyUrl: function copyUrl() {
+      navigator.clipboard.writeText(this.userUrl);
     }
   },
   mounted: function mounted() {
@@ -22032,26 +22040,84 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "container-fluid mt--6" },
-      [
-        _vm._m(1),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _vm._m(3),
-        _vm._v(" "),
-        _vm._m(4),
-        _vm._v(" "),
-        _c("footer-component")
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "container-fluid mt--6" },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xl-12" }, [
+          _c("div", { staticClass: "card card-stats" }, [
+            _vm.user.acc_type == 1 || _vm.user.acc_type == 2
+              ? _c("div", { staticClass: "card-body" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass:
+                        "card-title text-uppercase text-muted mb-0 d-block"
+                    },
+                    [_vm._v("Agent Registration Link")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-3" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.userUrl,
+                          expression: "userUrl"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        "aria-label": "Agent Registration Link",
+                        "aria-describedby": "basic-addon2"
+                      },
+                      domProps: { value: _vm.userUrl },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.userUrl = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group-append" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-outline-primary",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.copyUrl($event)
+                            }
+                          }
+                        },
+                        [_vm._v("Copy link")]
+                      )
+                    ])
+                  ])
+                ])
+              : _vm._e()
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c("footer-component")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -22063,49 +22129,6 @@ var staticRenderFns = [
         _c("div", { staticClass: "header-body" }, [
           _c("div", { staticClass: "row align-items-center py-4" }, [
             _c("div", { staticClass: "col-lg-6 col-7" })
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xl-12" }, [
-        _c("div", { staticClass: "shadow card card-stats" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "h5",
-              {
-                staticClass: "card-title text-uppercase text-muted mb-0 d-block"
-              },
-              [_vm._v("Agent Registration Link")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "input-group mb-3" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  "aria-label": "Agent Registration Link",
-                  "aria-describedby": "basic-addon2",
-                  readonly: ""
-                }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group-append" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-primary",
-                    attrs: { type: "button" }
-                  },
-                  [_vm._v("Copy link")]
-                )
-              ])
-            ])
           ])
         ])
       ])
@@ -38568,19 +38591,6 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-// import Echo from 'laravel-echo';
-// window.Pusher = require('pusher-js');
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
 
 /***/ }),
 

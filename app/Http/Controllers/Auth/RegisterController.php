@@ -50,10 +50,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-          //  'name' => ['required', 'string', 'max:255', 'unique:tbl_accounts'],
+            'url' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:tbl_accounts'],
             'username' => ['required', 'unique:tbl_accounts'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'fb_link' => ['required'],
         ]);
     }
 
@@ -65,12 +66,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+        $url = explode('/',$data['url']);
+        $referral_id = preg_split("/\D+/", "$url[4] ")[0];
+  
         return User::create([
             //'name' => $data['name'],
             'email' => $data['email'],
             'username' => $data['username'],
-            'acc_type' => 3,
+            'acc_type' => $url[5],
+            'acc_inv' => $referral_id,
             'password' => Hash::make($data['password']),
+            'acc_fb_link' => $data['fb_link'],
+
+            
         ]);
     }
 }
