@@ -2305,6 +2305,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -22042,77 +22043,80 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container-fluid mt--6" },
     [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xl-12" }, [
-          _c("div", { staticClass: "card card-stats" }, [
-            _vm.user.acc_type == 1 || _vm.user.acc_type == 2
-              ? _c("div", { staticClass: "card-body" }, [
-                  _c(
-                    "h5",
-                    {
-                      staticClass:
-                        "card-title text-uppercase text-muted mb-0 d-block"
-                    },
-                    [_vm._v("Agent Registration Link")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-3" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.userUrl,
-                          expression: "userUrl"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        "aria-label": "Agent Registration Link",
-                        "aria-describedby": "basic-addon2"
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "container-fluid mt--6" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-xl-12" }, [
+            _c("div", { staticClass: "card card-stats" }, [
+              _vm.user.acc_type == 1 || _vm.user.acc_type == 2
+                ? _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass:
+                          "card-title text-uppercase text-muted mb-0 d-block"
                       },
-                      domProps: { value: _vm.userUrl },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.userUrl = $event.target.value
-                        }
-                      }
-                    }),
+                      [_vm._v("Agent Registration Link")]
+                    ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "input-group-append" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-outline-primary",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.copyUrl($event)
-                            }
+                    _c("div", { staticClass: "input-group mb-3" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.userUrl,
+                            expression: "userUrl"
                           }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          "aria-label": "Agent Registration Link",
+                          "aria-describedby": "basic-addon2"
                         },
-                        [_vm._v("Copy link")]
-                      )
+                        domProps: { value: _vm.userUrl },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.userUrl = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "input-group-append" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-primary",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.copyUrl($event)
+                              }
+                            }
+                          },
+                          [_vm._v("Copy link")]
+                        )
+                      ])
                     ])
                   ])
-                ])
-              : _vm._e()
+                : _vm._e()
+            ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
       _vm._m(1),
       _vm._v(" "),
       _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
       _vm._v(" "),
       _c("footer-component")
     ],
