@@ -12,7 +12,7 @@ class AgentController extends Controller
     public function getAgentList() {
         $query = User::with('accountType')
         ->with('accoutPoints')
-        ->where('acc_inv', 8)->get();
+        ->where('acc_inv', Auth::id())->get();
 
         return $query;
     }
