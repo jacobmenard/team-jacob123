@@ -13,4 +13,13 @@ class UsersController extends Controller
   public function getAccountType(){
     return User::with('accountType')->get();
   }
+
+  public function getIndividualUser($agentID) {
+    $query = User::with('accoutPoints')
+                  ->where('id', $agentID)
+                  ->get();
+
+    return $query;
+  }
+
 }

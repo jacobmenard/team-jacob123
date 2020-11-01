@@ -65,10 +65,10 @@
                         <span class="badge badge-pill badge-danger" v-if="agent.acc_stat == 'INACTIVE'">{{agent.acc_stat}}</span>
                       </td>
                       <td>
-                        <a href="#" class="btn btn-sm btn-danger d-inline-block text-uppercase" v-on:click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'ACTIVE'">Inactive</a>
-                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" v-on:click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'INACTIVE'">Activate</a>
-                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase">Load Transfer</a>
-                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase">Update Percentage</a>
+                        <a href="#" class="btn btn-sm btn-danger d-inline-block text-uppercase" @click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'ACTIVE'">Inactive</a>
+                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'INACTIVE'">Activate</a>
+                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="loadTransfer(agent.id)">Load Transfer</a>
+                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="updatePercentage()">Update Percentage</a>
                       </td>
                     </tr>
 
@@ -87,8 +87,8 @@
 export default {
     data() {
         return {
-          agents: null,
-          message: null
+          agents: '',
+          message: ''
         }
     },
     methods: {
@@ -124,6 +124,13 @@ export default {
 
           }
         })
+      },
+      loadTransfer(id) {
+        const userID = id
+        this.$router.push({name: "loadtransfer", params: {user : userID}})
+      },
+      updatePercentage() {
+        swal("Good job!", "You clicked the button!", "success");
       }
     },
     mounted() {

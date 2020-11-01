@@ -3,6 +3,7 @@ import NotFound from './components/NotFound';
 // import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import LoadStation from './components/LoadStation';
+import loadTransfer from './components/LoadTransfer';
 
 
 export default{
@@ -36,7 +37,13 @@ export default{
         {
             path: '/pages/loadstation',
             component: LoadStation,
-            name: "LoadStation"
+            name: "loadstation"
+        },
+        
+        {
+            path: '/pages/loadtransfer/:user',
+            component: loadTransfer,
+            name: "loadtransfer"
         }
     ]
 }
