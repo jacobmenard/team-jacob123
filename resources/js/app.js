@@ -1,12 +1,16 @@
 require('./bootstrap');
 window.Vue = require('vue');
 
+
+
 import VueRouter from 'vue-router';
 import routes from './routes';
 import swal from 'sweetalert';
 
 import vueNumeralFilterInstaller from 'vue-numeral-filter';
 Vue.use(vueNumeralFilterInstaller, { locale: 'en-gb' });
+
+
 
 Vue.use(VueRouter);
 

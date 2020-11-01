@@ -43,7 +43,7 @@
               <div class="card-header border-0">
                 <div class="row align-items-center">
                   <div class="col">
-                    <h3 class="mb-0">Load Transaction</h3>
+                    <h3 class="mb-0">{{trans_type.trans_type}} Transaction</h3>
                   </div>
                   <!-- <div class="col text-right">
                     <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -53,34 +53,34 @@
               <div class="card-body">
                   <div class="row">
                     <div class="col-xl-12">
-                        <div class="form-group">
-                            <label class="form-control-label">Transaction type</label>
-                            <select class="form-control" v-model="sel_typ">
-                                <option v-for="typ in trans_type" :key="typ.trans_typ_no" v-bind:value="typ.trans_typ_no">{{typ.trans_type}}</option>
-                            </select>
-                        </div>
-
+                      <form>
                         <div class="form-group">
                             <label class="form-control-label d-block">User ID: {{individualUser[0].id | numeral('00000000000')}}</label>
                             <label class="form-control-label d-block">User name: {{individualUser[0].username}}</label>
-                            <label class="form-control-label d-block">Remaining Load: {{individualUser[0].accout_points.acc_load | numeral('0,0.00')}}</label>
-                            <label class="form-control-label" for="load-amount">Load Amount</label>
-                            <input id="input-address" class="form-control" placeholder="0.00" type="number" v-model="loadAmt">
+                            <label v-if="trans_type.trans_typ_no == 2" class="form-control-label d-block">Remaining Load: {{individualUser[0].accout_points.acc_load | numeral('0,0.00')}}</label>
+                            <label v-if="trans_type.trans_typ_no == 3" class="form-control-label d-block">Current Sales: {{individualUser[0].accout_points.acc_com | numeral('0,0.00')}}</label>
+                            <label class="form-control-label" for="load-amount">{{trans_type.trans_typ_no == 1 ? 'Deposit' : trans_type.trans_typ_no == 2 ? 'Widrawal load' : trans_type.trans_typ_no == 3 ? 'Widraw sales' : ''}} amount</label>
+                            <input id="input-address" class="form-control" :class="{'is-invalid' : form.loadAmt < 0}" placeholder="0.00" type="number" v-model="form.loadAmt">
+                            <!-- <span v-if="errors.transAmt" class="text-danger">Menard</span> -->
                         </div>
 
                         <div class="form-group">
-                            <label class="form-control-label" for="input-address">Total Load Balance: {{getTotalLoad(individualUser[0].accout_points.acc_load, loadAmt == '' ? 0 : loadAmt) | numeral('0,0.00')}}</label>
+                            <label v-if="trans_type.trans_typ_no != 3" class="form-control-label" v-bind:class="{'text-danger' : form.loadAmt < 0}" for="input-address">Remaining Sales: {{getTotalLoad(individualUser[0].accout_points.acc_load, form.loadAmt == '' ? 0 : form.loadAmt) | numeral('0,0.00')}}</label>
+                            <label v-if="trans_type.trans_typ_no == 3" class="form-control-label" v-bind:class="{'text-danger' : getTotalLoad(individualUser[0].accout_points.acc_com, form.loadAmt == '' ? 0 : form.loadAmt) < 0}" for="input-address">Total Balance: {{getTotalLoad(individualUser[0].accout_points.acc_com, form.loadAmt == '' ? 0 : form.loadAmt) | numeral('0,0.00')}}</label>
                         </div>
 
                         <div class="form-group">
                             <label class="form-control-label d-block" for="input-address">Remarks: (Optional)</label>
-                            <input id="input-address" class="form-control" placeholder="Input remarks here (Optional)" type="text" v-model="remarks">
+                            <input id="input-address" class="form-control" placeholder="Input remarks here (Optional)" type="text" v-model="form.remarks">
                         </div>
 
                         <div class="col-12 d-flex justify-content-center">
-                            <a href="#!" class="btn btn-primary d-inline-block">Transact now</a>
+                            <a v-if="trans_type.trans_typ_no == 1" class="btn btn-primary d-inline-block" type="submit" @click.prevent="saveTransaction">Deposit now</a>
+                            <a v-if="trans_type.trans_typ_no == 2" class="btn btn-primary d-inline-block" type="submit" @click.prevent="saveTransaction">Widraw load now</a>
+                            <a v-if="trans_type.trans_typ_no == 3" class="btn btn-primary d-inline-block" type="submit" @click.prevent="saveTransaction">Widraw sales now</a>
                             <a v-on:click="backtoLoadStation()" class="btn btn-danger d-inline-block">Back</a>
                         </div>
+                      </form>
                     </div>
                 </div>
               </div>
@@ -149,12 +149,29 @@
               individualUser: null,
               userID: this.$route.params.user,
 
-              sel_typ: '',
-              loadAmt: '',
-              remarks: ''
+              form: {
+                loadAmt: '',
+                remarks: ''
+              },
+              error: []
             }
         },
         methods: {
+            saveTransaction() {
+              var trans_val = {
+                'transType': this.trans_type.trans_typ_no,
+                'transFrom' : this.login_user.id,
+                'transTo': this.userID,
+                'transAmt': this.form.loadAmt,
+                'transRemarks': this.form.remarks
+              }
+              var url = '/save/transaction'
+              axios.post(url, trans_val).then((res) => {
+                this.form.reset()
+              }).catch((error) => {
+                  this.errors = error.response.data.errors;
+              })
+            },
             backtoLoadStation() {
                 this.$router.push({name: "loadstation"});
             },
@@ -167,7 +184,8 @@
               })
             },
             getTransactionType() {
-              var url = '/login/getTransactionType'
+              var trans = (this.$route.params.trans == 'Deposit' ? 1 : this.$route.params.trans == 'Widraw' ? 2 : this.$route.params.trans == 'Sales' ? 3 : 0)
+              var url = '/login/getTransactionType/' + trans
               axios.get(url).then((res) => {
                 this.trans_type = res.data
               })
@@ -181,7 +199,12 @@
             getTotalLoad(current, addition) {
               var val1 = parseFloat(current)
               var val2 = parseFloat(addition)
-              return val1 + val2;
+              if (this.trans_type.trans_typ_no == 1) {
+                return val1 + val2;
+              } else {
+                return val1 - val2;
+              }
+
             }
         },
         mounted() {

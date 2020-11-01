@@ -9,4 +9,11 @@ class TblTransactions extends Model
     protected $table = 'tbl_transactions';
     protected $primaryKey = 'trans_no';
     
+    protected $fillable = [
+        "trans_type",
+        "trans_from",
+        "trans_to",
+        "trans_amt",
+        "trans_remarks"
+    ];
 }

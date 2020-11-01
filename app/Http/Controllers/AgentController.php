@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\RefTranstype;
 use App\User;
+use App\TblTransactions;
+use App\TblAccPoints;
 
 class AgentController extends Controller
 {
@@ -43,10 +45,26 @@ class AgentController extends Controller
         return $query;
     }
 
-    public function getTransactionType() {
-        $query = RefTranstype::all();
+    public function getTransactionType($typ) {
+        $query = RefTranstype::find($typ);
 
         return $query;
+    }
+
+    public function saveTrans(Request $request) {
+        
+        $request->validate([
+            'transAmt' => ['required']
+        ]);
+
+        TblTransactions::create([
+            'trans_type' => $request->transType,
+            'trans_from' => $request->transFrom,
+            'trans_to' => $request->transTo,
+            'trans_amt' => $request->transAmt,
+            'trans_remarks' => $request->transRemarks
+        ]);
+        
     }
     
 }

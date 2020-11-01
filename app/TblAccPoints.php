@@ -12,4 +12,13 @@ class TblAccPoints extends Model
     ];
 
     protected $primaryKey = 'pt_no';
+
+    protected $fillable = [
+        'acc_load',
+        'acc_com'
+    ];
+
+    public function accountInfo() {
+        return $this->hasOne('App\User', 'id', 'pt_acc')->select('id', 'username', 'acc_percentage');
+    }
 }
