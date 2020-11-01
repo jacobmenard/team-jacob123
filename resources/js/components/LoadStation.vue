@@ -59,7 +59,7 @@
                       <th>{{agent.username}}</th>
                       <td>{{agent.email}}</td>
                       <th class="text-center">{{agent.acc_percentage}}</th>
-                      <th class="text-right">{{ agent.accout_points.acc_load | numeral('0,0.00') }}</th>
+                      <th class="text-right">{{ agent.accout_points !=null ? agent.accout_points.acc_load :'' | numeral('0,0.00') }}</th>
                       <td>
                         <span class="badge badge-pill badge-success" v-if="agent.acc_stat == 'ACTIVE'">{{agent.acc_stat}}</span>
                         <span class="badge badge-pill badge-danger" v-if="agent.acc_stat == 'INACTIVE'">{{agent.acc_stat}}</span>
