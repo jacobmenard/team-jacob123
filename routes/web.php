@@ -35,4 +35,7 @@ Auth::routes();
 
 Route::get('/sa/post/updateAgentStatus/{id}/{stat}', 'AgentController@updateStatus');
 Route::get('/sa/get/getAgentList', 'AgentController@getAgentList');
-//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/login/getMainUser' , 'AgentController@getMainUserLoad');
+Route::get('/login/getTransactionType', 'AgentController@getTransactionType');
+Route::get('/login/loadtransfer/{agentID}', 'UsersController@getIndividualUser');
