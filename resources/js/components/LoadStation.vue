@@ -67,7 +67,9 @@
                       <td>
                         <a href="#" class="btn btn-sm btn-danger d-inline-block text-uppercase" @click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'ACTIVE'">Inactive</a>
                         <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'INACTIVE'">Activate</a>
-                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="loadTransfer(agent.id)">Load Transfer</a>
+                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="loadTransfer(agent.id, 'Deposit')">Deposit</a>
+                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="loadTransfer(agent.id, 'Widraw')">W. Load</a>
+                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="loadTransfer(agent.id, 'Sales')">W. Sales</a>
                         <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="updatePercentage()">Update Percentage</a>
                       </td>
                     </tr>
@@ -125,9 +127,10 @@ export default {
           }
         })
       },
-      loadTransfer(id) {
+      loadTransfer(id, type) {
         const userID = id
-        this.$router.push({name: "loadtransfer", params: {user : userID}})
+        const transType = type
+        this.$router.push({name: "loadtransfer", params: {user : userID, trans: transType}})
       },
       updatePercentage() {
         swal("Good job!", "You clicked the button!", "success");

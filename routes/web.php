@@ -37,5 +37,6 @@ Route::get('/sa/post/updateAgentStatus/{id}/{stat}', 'AgentController@updateStat
 Route::get('/sa/get/getAgentList', 'AgentController@getAgentList');
 
 Route::get('/login/getMainUser' , 'AgentController@getMainUserLoad');
-Route::get('/login/getTransactionType', 'AgentController@getTransactionType');
+Route::get('/login/getTransactionType/{typ}', 'AgentController@getTransactionType');
 Route::get('/login/loadtransfer/{agentID}', 'UsersController@getIndividualUser');
+Route::post('/save/transaction', 'AgentController@saveTrans');

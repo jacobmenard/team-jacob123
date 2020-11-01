@@ -41,7 +41,7 @@ export default{
         },
         
         {
-            path: '/pages/loadtransfer/:user',
+            path: '/pages/loadtransfer/:trans/:user',
             component: loadTransfer,
             name: "loadtransfer"
         }

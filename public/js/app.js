@@ -2432,6 +2432,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2474,12 +2476,14 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    loadTransfer: function loadTransfer(id) {
+    loadTransfer: function loadTransfer(id, type) {
       var userID = id;
+      var transType = type;
       this.$router.push({
         name: "loadtransfer",
         params: {
-          user: userID
+          user: userID,
+          trans: transType
         }
       });
     },
@@ -2652,47 +2656,72 @@ __webpack_require__.r(__webpack_exports__);
       trans_type: '',
       individualUser: null,
       userID: this.$route.params.user,
-      sel_typ: '',
-      loadAmt: '',
-      remarks: ''
+      form: {
+        loadAmt: '',
+        remarks: ''
+      },
+      error: []
     };
   },
   methods: {
+    saveTransaction: function saveTransaction() {
+      var _this = this;
+
+      var trans_val = {
+        'transType': this.trans_type.trans_typ_no,
+        'transFrom': this.login_user.id,
+        'transTo': this.userID,
+        'transAmt': this.form.loadAmt,
+        'transRemarks': this.form.remarks
+      };
+      var url = '/save/transaction';
+      axios.post(url, trans_val).then(function (res) {
+        _this.form.reset();
+      })["catch"](function (error) {
+        _this.errors = error.response.data.errors;
+      });
+    },
     backtoLoadStation: function backtoLoadStation() {
       this.$router.push({
         name: "loadstation"
       });
     },
     getLoginAgent: function getLoginAgent() {
-      var _this = this;
+      var _this2 = this;
 
       var url = '/login/getMainUser';
       axios.get(url).then(function (res) {
-        _this.login_user = res.data;
+        _this2.login_user = res.data;
       })["catch"](function () {
         console.log(error);
       });
     },
     getTransactionType: function getTransactionType() {
-      var _this2 = this;
+      var _this3 = this;
 
-      var url = '/login/getTransactionType';
+      var trans = this.$route.params.trans == 'Deposit' ? 1 : this.$route.params.trans == 'Widraw' ? 2 : this.$route.params.trans == 'Sales' ? 3 : 0;
+      var url = '/login/getTransactionType/' + trans;
       axios.get(url).then(function (res) {
-        _this2.trans_type = res.data;
+        _this3.trans_type = res.data;
       });
     },
     getIndividualUser: function getIndividualUser() {
-      var _this3 = this;
+      var _this4 = this;
 
       var url = '/login/loadtransfer/' + this.userID;
       axios.get(url).then(function (res) {
-        _this3.individualUser = res.data;
+        _this4.individualUser = res.data;
       });
     },
     getTotalLoad: function getTotalLoad(current, addition) {
       var val1 = parseFloat(current);
       var val2 = parseFloat(addition);
-      return val1 + val2;
+
+      if (this.trans_type.trans_typ_no == 1) {
+        return val1 + val2;
+      } else {
+        return val1 - val2;
+      }
     }
   },
   mounted: function mounted() {
@@ -23315,11 +23344,41 @@ var render = function() {
                                 attrs: { href: "#" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.loadTransfer(agent.id)
+                                    return _vm.loadTransfer(agent.id, "Deposit")
                                   }
                                 }
                               },
-                              [_vm._v("Load Transfer")]
+                              [_vm._v("Deposit")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "btn btn-sm btn-primary d-inline-block text-uppercase",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.loadTransfer(agent.id, "Widraw")
+                                  }
+                                }
+                              },
+                              [_vm._v("W. Load")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "btn btn-sm btn-primary d-inline-block text-uppercase",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.loadTransfer(agent.id, "Sales")
+                                  }
+                                }
+                              },
+                              [_vm._v("W. Sales")]
                             ),
                             _vm._v(" "),
                             _c(
@@ -23474,234 +23533,316 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card" }, [
-              _vm._m(1),
+              _c("div", { staticClass: "card-header border-0" }, [
+                _c("div", { staticClass: "row align-items-center" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _c("h3", { staticClass: "mb-0" }, [
+                      _vm._v(_vm._s(_vm.trans_type.trans_type) + " Transaction")
+                    ])
+                  ])
+                ])
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-xl-12" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { staticClass: "form-control-label" }, [
-                        _vm._v("Transaction type")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
+                    _c("form", [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "label",
+                          { staticClass: "form-control-label d-block" },
+                          [
+                            _vm._v(
+                              "User ID: " +
+                                _vm._s(
+                                  _vm._f("numeral")(
+                                    _vm.individualUser[0].id,
+                                    "00000000000"
+                                  )
+                                )
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          { staticClass: "form-control-label d-block" },
+                          [
+                            _vm._v(
+                              "User name: " +
+                                _vm._s(_vm.individualUser[0].username)
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.trans_type.trans_typ_no == 2
+                          ? _c(
+                              "label",
+                              { staticClass: "form-control-label d-block" },
+                              [
+                                _vm._v(
+                                  "Remaining Load: " +
+                                    _vm._s(
+                                      _vm._f("numeral")(
+                                        _vm.individualUser[0].accout_points
+                                          .acc_load,
+                                        "0,0.00"
+                                      )
+                                    )
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.trans_type.trans_typ_no == 3
+                          ? _c(
+                              "label",
+                              { staticClass: "form-control-label d-block" },
+                              [
+                                _vm._v(
+                                  "Current Sales: " +
+                                    _vm._s(
+                                      _vm._f("numeral")(
+                                        _vm.individualUser[0].accout_points
+                                          .acc_com,
+                                        "0,0.00"
+                                      )
+                                    )
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-control-label",
+                            attrs: { for: "load-amount" }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                _vm.trans_type.trans_typ_no == 1
+                                  ? "Deposit"
+                                  : _vm.trans_type.trans_typ_no == 2
+                                  ? "Widrawal load"
+                                  : _vm.trans_type.trans_typ_no == 3
+                                  ? "Widraw sales"
+                                  : ""
+                              ) + " amount"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
                           directives: [
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.sel_typ,
-                              expression: "sel_typ"
+                              value: _vm.form.loadAmt,
+                              expression: "form.loadAmt"
                             }
                           ],
                           staticClass: "form-control",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.sel_typ = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        _vm._l(_vm.trans_type, function(typ) {
-                          return _c(
-                            "option",
-                            {
-                              key: typ.trans_typ_no,
-                              domProps: { value: typ.trans_typ_no }
-                            },
-                            [_vm._v(_vm._s(typ.trans_type))]
-                          )
-                        }),
-                        0
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        { staticClass: "form-control-label d-block" },
-                        [
-                          _vm._v(
-                            "User ID: " +
-                              _vm._s(
-                                _vm._f("numeral")(
-                                  _vm.individualUser[0].id,
-                                  "00000000000"
-                                )
-                              )
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        { staticClass: "form-control-label d-block" },
-                        [
-                          _vm._v(
-                            "User name: " +
-                              _vm._s(_vm.individualUser[0].username)
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        { staticClass: "form-control-label d-block" },
-                        [
-                          _vm._v(
-                            "Remaining Load: " +
-                              _vm._s(
-                                _vm._f("numeral")(
-                                  _vm.individualUser[0].accout_points.acc_load,
-                                  "0,0.00"
-                                )
-                              )
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          staticClass: "form-control-label",
-                          attrs: { for: "load-amount" }
-                        },
-                        [_vm._v("Load Amount")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.loadAmt,
-                            expression: "loadAmt"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "input-address",
-                          placeholder: "0.00",
-                          type: "number"
-                        },
-                        domProps: { value: _vm.loadAmt },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.loadAmt = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "form-control-label",
-                          attrs: { for: "input-address" }
-                        },
-                        [
-                          _vm._v(
-                            "Total Load Balance: " +
-                              _vm._s(
-                                _vm._f("numeral")(
-                                  _vm.getTotalLoad(
-                                    _vm.individualUser[0].accout_points
-                                      .acc_load,
-                                    _vm.loadAmt == "" ? 0 : _vm.loadAmt
-                                  ),
-                                  "0,0.00"
-                                )
-                              )
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "form-control-label d-block",
-                          attrs: { for: "input-address" }
-                        },
-                        [_vm._v("Remarks: (Optional)")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.remarks,
-                            expression: "remarks"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "input-address",
-                          placeholder: "Input remarks here (Optional)",
-                          type: "text"
-                        },
-                        domProps: { value: _vm.remarks },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.remarks = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-12 d-flex justify-content-center" },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-primary d-inline-block",
-                            attrs: { href: "#!" }
+                          class: { "is-invalid": _vm.form.loadAmt < 0 },
+                          attrs: {
+                            id: "input-address",
+                            placeholder: "0.00",
+                            type: "number"
                           },
-                          [_vm._v("Transact now")]
+                          domProps: { value: _vm.form.loadAmt },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "loadAmt", $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _vm.trans_type.trans_typ_no != 3
+                          ? _c(
+                              "label",
+                              {
+                                staticClass: "form-control-label",
+                                class: { "text-danger": _vm.form.loadAmt < 0 },
+                                attrs: { for: "input-address" }
+                              },
+                              [
+                                _vm._v(
+                                  "Remaining Sales: " +
+                                    _vm._s(
+                                      _vm._f("numeral")(
+                                        _vm.getTotalLoad(
+                                          _vm.individualUser[0].accout_points
+                                            .acc_load,
+                                          _vm.form.loadAmt == ""
+                                            ? 0
+                                            : _vm.form.loadAmt
+                                        ),
+                                        "0,0.00"
+                                      )
+                                    )
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.trans_type.trans_typ_no == 3
+                          ? _c(
+                              "label",
+                              {
+                                staticClass: "form-control-label",
+                                class: {
+                                  "text-danger":
+                                    _vm.getTotalLoad(
+                                      _vm.individualUser[0].accout_points
+                                        .acc_com,
+                                      _vm.form.loadAmt == ""
+                                        ? 0
+                                        : _vm.form.loadAmt
+                                    ) < 0
+                                },
+                                attrs: { for: "input-address" }
+                              },
+                              [
+                                _vm._v(
+                                  "Total Balance: " +
+                                    _vm._s(
+                                      _vm._f("numeral")(
+                                        _vm.getTotalLoad(
+                                          _vm.individualUser[0].accout_points
+                                            .acc_com,
+                                          _vm.form.loadAmt == ""
+                                            ? 0
+                                            : _vm.form.loadAmt
+                                        ),
+                                        "0,0.00"
+                                      )
+                                    )
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-control-label d-block",
+                            attrs: { for: "input-address" }
+                          },
+                          [_vm._v("Remarks: (Optional)")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-danger d-inline-block",
-                            on: {
-                              click: function($event) {
-                                return _vm.backtoLoadStation()
-                              }
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.remarks,
+                              expression: "form.remarks"
                             }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "input-address",
+                            placeholder: "Input remarks here (Optional)",
+                            type: "text"
                           },
-                          [_vm._v("Back")]
-                        )
-                      ]
-                    )
+                          domProps: { value: _vm.form.remarks },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "remarks", $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-12 d-flex justify-content-center" },
+                        [
+                          _vm.trans_type.trans_typ_no == 1
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-primary d-inline-block",
+                                  attrs: { type: "submit" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.saveTransaction($event)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Deposit now")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.trans_type.trans_typ_no == 2
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-primary d-inline-block",
+                                  attrs: { type: "submit" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.saveTransaction($event)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Widraw load now")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.trans_type.trans_typ_no == 3
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-primary d-inline-block",
+                                  attrs: { type: "submit" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.saveTransaction($event)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Widraw sales now")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-danger d-inline-block",
+                              on: {
+                                click: function($event) {
+                                  return _vm.backtoLoadStation()
+                                }
+                              }
+                            },
+                            [_vm._v("Back")]
+                          )
+                        ]
+                      )
+                    ])
                   ])
                 ])
               ])
             ])
           ]),
           _vm._v(" "),
-          _vm._m(2)
+          _vm._m(1)
         ]),
         _vm._v(" "),
         _c("footer-component")
@@ -23721,18 +23862,6 @@ var staticRenderFns = [
           _c("div", { staticClass: "row align-items-center py-4" }, [
             _c("div", { staticClass: "col-lg-6 col-7" })
           ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header border-0" }, [
-      _c("div", { staticClass: "row align-items-center" }, [
-        _c("div", { staticClass: "col" }, [
-          _c("h3", { staticClass: "mb-0" }, [_vm._v("Load Transaction")])
         ])
       ])
     ])
@@ -39636,7 +39765,7 @@ __webpack_require__.r(__webpack_exports__);
     component: _components_LoadStation__WEBPACK_IMPORTED_MODULE_2__["default"],
     name: "loadstation"
   }, {
-    path: '/pages/loadtransfer/:user',
+    path: '/pages/loadtransfer/:trans/:user',
     component: _components_LoadTransfer__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: "loadtransfer"
   }]
