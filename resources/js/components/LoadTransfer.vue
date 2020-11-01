@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <label class="form-control-label d-block">User ID: {{individualUser[0].id | numeral('00000000000')}}</label>
                             <label class="form-control-label d-block">User name: {{individualUser[0].username}}</label>
-                            <label class="form-control-label d-block">Remaining Load: {{individualUser[0].accout_points.acc_load}}</label>
+                            <label class="form-control-label d-block">Remaining Load: {{individualUser[0].accout_points.acc_load | numeral('0,0.00')}}</label>
                             <label class="form-control-label" for="load-amount">Load Amount</label>
                             <input id="input-address" class="form-control" placeholder="0.00" type="number" v-model="loadAmt">
                         </div>

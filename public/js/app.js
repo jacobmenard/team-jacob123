@@ -23561,7 +23561,10 @@ var render = function() {
                           _vm._v(
                             "Remaining Load: " +
                               _vm._s(
-                                _vm.individualUser[0].accout_points.acc_load
+                                _vm._f("numeral")(
+                                  _vm.individualUser[0].accout_points.acc_load,
+                                  "0,0.00"
+                                )
                               )
                           )
                         ]
