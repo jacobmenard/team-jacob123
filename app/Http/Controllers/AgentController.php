@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\RefTranstype;
 use App\User;
 
 class AgentController extends Controller
@@ -12,7 +12,8 @@ class AgentController extends Controller
     public function getAgentList() {
         $query = User::with('accountType')
         ->with('accoutPoints')
-        ->where('acc_inv', Auth::id())->get();
+        ->where([['acc_inv', '=',  Auth::id()], ['acc_type', '<>', 4]])
+        ->get();
 
         return $query;
     }
@@ -30,4 +31,22 @@ class AgentController extends Controller
         $user->save();
 
     }
+
+    public function getMainUserLoad() {
+
+        $query = User::select('id', 'username')
+        ->with('accountType')
+        ->with('accoutPoints')
+        ->where('id', Auth::id())
+        ->first();
+
+        return $query;
+    }
+
+    public function getTransactionType() {
+        $query = RefTranstype::all();
+
+        return $query;
+    }
+    
 }

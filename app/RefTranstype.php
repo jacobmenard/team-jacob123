@@ -9,6 +9,4 @@ class RefTranstype extends Model
     protected $table = 'ref_transtype';
     protected $primaryKey = 'trans_typ_no';
 
-    
-
 }
