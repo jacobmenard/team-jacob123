@@ -21,6 +21,11 @@ trait RegistersUsers
         return view('auth.register');
     }
 
+    public function showRegistrationFormForAdmin()
+    {
+        return view('auth.register_admin');
+    }
+
     /**
      * Handle a registration request for the application.
      *
@@ -32,7 +37,24 @@ trait RegistersUsers
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
+        $this->insert_acc_pt($user);
+        $this->guard()->login($user);
 
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 201)
+                    : redirect($this->redirectPath());
+    }
+
+    public function registerAdmin(Request $request)
+    {
+        $this->validatorForAdmin($request->all())->validate();
+
+        event(new Registered($user = $this->createAdmin($request->all())));
+        $this->insert_acc_pt($user);
         $this->guard()->login($user);
 
         if ($response = $this->registered($request, $user)) {
@@ -63,6 +85,6 @@ trait RegistersUsers
      */
     protected function registered(Request $request, $user)
     {
-        //
+        
     }
 }

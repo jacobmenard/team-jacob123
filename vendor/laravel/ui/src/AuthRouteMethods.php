@@ -33,6 +33,10 @@ class AuthRouteMethods
                     $this->post('register', 'Auth\RegisterController@register');
                 }
 
+                if ($options['register_admin'] ?? true) {
+                    $this->get('register', 'Auth\RegisterController@showRegistrationFormForAdmin')->name('register_admin');
+                    $this->post('register', 'Auth\RegisterController@registerAdmin');
+                }
                 // Password Reset Routes...
                 if ($options['reset'] ?? true) {
                     $this->resetPassword();
