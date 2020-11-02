@@ -51334,11 +51334,6 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
 /*!******************************************************************************************!*\
   !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/toastr.scss ***!
   \******************************************************************************************/
