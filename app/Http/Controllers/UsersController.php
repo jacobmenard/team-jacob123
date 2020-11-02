@@ -17,7 +17,7 @@ class UsersController extends Controller
   public function getIndividualUser($agentID) {
     $query = User::with('accoutPoints')
                   ->where('id', $agentID)
-                  ->get();
+                  ->first();
 
     return $query;
   }

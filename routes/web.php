@@ -40,3 +40,5 @@ Route::get('/login/getMainUser' , 'AgentController@getMainUserLoad');
 Route::get('/login/getTransactionType/{typ}', 'AgentController@getTransactionType');
 Route::get('/login/loadtransfer/{agentID}', 'UsersController@getIndividualUser');
 Route::post('/save/transaction', 'AgentController@saveTrans');
+
+Route::post('/agent/transaction', 'AgentController@getTransactionLogs');

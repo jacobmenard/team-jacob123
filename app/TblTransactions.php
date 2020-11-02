@@ -16,4 +16,8 @@ class TblTransactions extends Model
         "trans_amt",
         "trans_remarks"
     ];
+
+    public function getTransType() {
+        return $this->hasOne('App\refTranstype', 'trans_typ_no', 'trans_type')->select('trans_typ_no', 'trans_type');
+    }
 }

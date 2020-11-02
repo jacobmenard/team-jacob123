@@ -55,18 +55,18 @@
                     <div class="col-xl-12">
                       <form>
                         <div class="form-group">
-                            <label class="form-control-label d-block">User ID: {{individualUser[0].id | numeral('00000000000')}}</label>
-                            <label class="form-control-label d-block">User name: {{individualUser[0].username}}</label>
-                            <label v-if="trans_type.trans_typ_no == 2" class="form-control-label d-block">Remaining Load: {{individualUser[0].accout_points.acc_load | numeral('0,0.00')}}</label>
-                            <label v-if="trans_type.trans_typ_no == 3" class="form-control-label d-block">Current Sales: {{individualUser[0].accout_points.acc_com | numeral('0,0.00')}}</label>
+                            <label class="form-control-label d-block">User ID: {{individualUser.id | numeral('00000000000')}}</label>
+                            <label class="form-control-label d-block">User name: {{individualUser.username}}</label>
+                            <label v-if="trans_type.trans_typ_no == 2" class="form-control-label d-block">Remaining Load: {{individualUser.accout_points.acc_load | numeral('0,0.00')}}</label>
+                            <label v-if="trans_type.trans_typ_no == 3" class="form-control-label d-block">Current Sales: {{individualUser.accout_points.acc_com | numeral('0,0.00')}}</label>
                             <label class="form-control-label" for="load-amount">{{trans_type.trans_typ_no == 1 ? 'Deposit' : trans_type.trans_typ_no == 2 ? 'Widrawal load' : trans_type.trans_typ_no == 3 ? 'Widraw sales' : ''}} amount</label>
                             <input id="input-address" class="form-control" :class="{'is-invalid' : form.loadAmt < 0}" placeholder="0.00" type="number" v-model="form.loadAmt">
                             <!-- <span v-if="errors.transAmt" class="text-danger">Menard</span> -->
                         </div>
 
                         <div class="form-group">
-                            <label v-if="trans_type.trans_typ_no != 3" class="form-control-label" v-bind:class="{'text-danger' : form.loadAmt < 0}" for="input-address">Remaining Sales: {{getTotalLoad(individualUser[0].accout_points.acc_load, form.loadAmt == '' ? 0 : form.loadAmt) | numeral('0,0.00')}}</label>
-                            <label v-if="trans_type.trans_typ_no == 3" class="form-control-label" v-bind:class="{'text-danger' : getTotalLoad(individualUser[0].accout_points.acc_com, form.loadAmt == '' ? 0 : form.loadAmt) < 0}" for="input-address">Total Balance: {{getTotalLoad(individualUser[0].accout_points.acc_com, form.loadAmt == '' ? 0 : form.loadAmt) | numeral('0,0.00')}}</label>
+                            <label v-if="trans_type.trans_typ_no != 3" class="form-control-label" v-bind:class="{'text-danger' : form.loadAmt < 0}" for="input-address">Remaining Sales: {{getTotalLoad(individualUser.accout_points.acc_load, form.loadAmt == '' ? 0 : form.loadAmt) | numeral('0,0.00')}}</label>
+                            <label v-if="trans_type.trans_typ_no == 3" class="form-control-label" v-bind:class="{'text-danger' : getTotalLoad(individualUser.accout_points.acc_com, form.loadAmt == '' ? 0 : form.loadAmt) < 0}" for="input-address">Total Balance: {{getTotalLoad(individualUser.accout_points.acc_com, form.loadAmt == '' ? 0 : form.loadAmt) | numeral('0,0.00')}}</label>
                         </div>
 
                         <div class="form-group">
@@ -91,7 +91,7 @@
               <div class="card-header border-0">
                 <div class="row align-items-center">
                   <div class="col">
-                    <h3 class="mb-0">Agent transaction log</h3>
+                    <h3 class="mb-0">Agent <span class="text-success">{{individualUser.username}}</span> transaction log</h3>
                   </div>
                   <!-- <div class="col text-right">
                     <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -111,23 +111,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- <tr v-for="agent in agents" :key="agent.id">
-                      <th scope="row" class="text-center">{{ agent.id | numeral('00000000') }}</th>
-                      <th>{{agent.username}}</th>
-                      <td>{{agent.email}}</td>
-                      <th class="text-center">{{agent.acc_percentage}}</th>
-                      <th class="text-right">{{ agent.accout_points.acc_load | numeral('0,0.00') }}</th>
-                      <td>
-                        <span class="badge badge-pill badge-success" v-if="agent.acc_stat == 'ACTIVE'">{{agent.acc_stat}}</span>
-                        <span class="badge badge-pill badge-danger" v-if="agent.acc_stat == 'INACTIVE'">{{agent.acc_stat}}</span>
-                      </td>
-                      <td>
-                        <a href="#" class="btn btn-sm btn-danger d-inline-block text-uppercase" @click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'ACTIVE'">Inactive</a>
-                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'INACTIVE'">Activate</a>
-                        <router-link to="/pages/loadtransfer" class="btn btn-sm btn-primary d-inline-block text-uppercase" >Load Transfer</router-link>
-                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="updatePercentage()">Update Percentage</a>
-                      </td>
-                    </tr> -->
+                    <tr v-for="trans in trans_log" :key="trans.trans_no">
+                      <td scope="row">{{ trans.trans_no | numeral('00000000') }}</td>
+                      <td>{{trans.created_at | formatDate}}</td>
+                      <td>{{trans.get_trans_type.trans_type}}</td>
+                      <td class="text-center">{{trans.trans_amt | numeral('0,0.00')}}</td>
+                      <td class="text-center">{{trans.trans_remarks == '' || trans.trans_remarks == null ? '-' : trans.trans_remarks}}</td>
+                    </tr>
 
                   </tbody>
                 </table>
@@ -153,7 +143,9 @@
                 loadAmt: '',
                 remarks: ''
               },
-              error: []
+              error: [],
+
+              trans_log: ''
             }
         },
         methods: {
@@ -205,6 +197,15 @@
                 return val1 - val2;
               }
 
+            },
+            getIndividualTransaction() {
+              var url = '/agent/transaction';
+              var data = {
+                'agentID': this.userID
+              }
+              axios.post(url, data).then((res) => {
+                this.trans_log = res.data
+              })
             }
         },
         mounted() {
@@ -212,6 +213,7 @@
             this.getLoginAgent()
             this.getTransactionType()
             this.getIndividualUser()
+            this.getIndividualTransaction()
         },
     }
 </script>
