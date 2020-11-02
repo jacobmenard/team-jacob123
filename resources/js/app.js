@@ -1,9 +1,14 @@
 require('./bootstrap');
 window.Vue = require('vue');
 
+
 import VueRouter from 'vue-router';
 import routes from './routes';
+import toastr from 'toastr';
 import swal from 'sweetalert';
+
+window.toastr = toastr;
+window.swal = swal;
 
 import vueNumeralFilterInstaller from 'vue-numeral-filter';
 Vue.use(vueNumeralFilterInstaller, { locale: 'en-gb' });

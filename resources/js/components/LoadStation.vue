@@ -68,7 +68,7 @@
                         <a href="#" class="btn btn-sm btn-danger d-inline-block text-uppercase" @click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'ACTIVE'">Inactive</a>
                         <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="changeUserStatus(agent.id, agent.acc_stat)" v-if="agent.acc_stat == 'INACTIVE'">Activate</a>
                         <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="loadTransfer(agent.id)">Load Transfer</a>
-                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="updatePercentage()">Update Percentage</a>
+                        <a href="#" class="btn btn-sm btn-primary d-inline-block text-uppercase" @click="openModel(agent.id,agent.acc_percentage)">Update Percentage</a>
                       </td>
                     </tr>
 
@@ -80,7 +80,37 @@
         </div>
         <footer-component></footer-component>
       </div>
+      <!-- modal -->
+     <div v-if="myModel">
+    <transition name="model">
+     <div class="modal-mask">
+      <div class="modal-wrapper">
+       <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+           <h4 class="modal-title">Set Percentage</h4>
+          <button type="button" class="close" @click="myModel=false"><span aria-hidden="true">&times;</span></button>
+          
+         </div>
+         <div class="modal-body">
+          <div class="form-group">
+           <label>Enter Percentage</label>
+           <input type="text" class="form-control" v-model="selected_agent.percentage" />
+          </div>
+          <br />
+          <div align="center">
+           <input type="hidden" v-model="selected_agent.id" />
+           <input type="button" class="btn btn-success btn-xs"  @click=" savePercentage" value="set percentage"/>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </transition>
+   </div>
     </div>
+ 
 </template>
 
 <script>
@@ -88,7 +118,10 @@ export default {
     data() {
         return {
           agents: '',
-          message: ''
+          message: '',
+          myModel: false,
+          selected_agent: {percentage:'',id:''},
+    
         }
     },
     methods: {
@@ -100,7 +133,7 @@ export default {
         })
       },
       changeUserStatus($id, $status) {
-        var msg = ($status == 'ACTIVE' ? 'inactive' : 'activate')
+        var msg = ($status == 'ACTIVE' ? 'deactivate' : 'activate')
         swal({
           title: "Status alert",
           text: "Are you sure to " + msg + " selected agent?",
@@ -131,11 +164,37 @@ export default {
       },
       updatePercentage() {
         swal("Good job!", "You clicked the button!", "success");
-      }
+      },
+      openModel(id,percentage){
+        if(percentage == null ){
+          this.selected_agent.percentage = 0;
+           this.selected_agent.id = id;
+        }else{
+          this.selected_agent.percentage = percentage;
+          this.selected_agent.id = id;
+        }
+        this.myModel = true;
+     },
+     
+     savePercentage(){
+       axios.post('/agent/setPercentage',this.selected_agent).then((res) => {
+        
+         if(res.data.success){
+          this.myModel = false;
+          swal("Good job!", res.data.message , "success");
+          this.getAgent();
+         }else{
+            swal("Error", res.data.message, "warning");
+         }
+        }).catch(() => {
+          console.log(error);
+        })  
+     }
     },
     mounted() {
       this.getAgent();
-    }
+    },
+    
 }
 
   

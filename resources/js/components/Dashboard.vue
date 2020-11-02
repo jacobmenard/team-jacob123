@@ -30,7 +30,7 @@
         <div class="row">
           <div class="col-xl-12">
             <div class="card card-stats">
-              <div class="card-body" v-if="user.acc_type == 1 || user.acc_type ==  2">
+              <div class="card-body" v-if="user? user.acc_type == 1 || user.acc_type ==  2:''">
                 <h5 class="card-title text-uppercase text-muted mb-0 d-block">Agent Registration Link</h5>
                 <div class="input-group mb-3">
                   <input type="text" class="form-control" aria-label="Agent Registration Link" v-model="userUrl" aria-describedby="basic-addon2" >
@@ -392,7 +392,7 @@
         </div>
       </div>
       <footer-component></footer-component>
-      
+     
     </div>
   
 </template>
@@ -405,6 +405,7 @@ export default {
         return {
              user: null,
              userUrl: '',
+             copy: false,
         }
     },
     methods: {
@@ -417,11 +418,13 @@ export default {
                       Math.random().toString(36).substring(2, 15) +
                       Math.random().toString(36).substring(2, 15);
             this.userUrl = baseurl + "/register/"+this.user.id+rnd+"/"+(this.user.acc_type ==2? 3: this.user.acc_type == 1? 2:'');
-            console.log(this.userUrl);
+            
         })
       },
       copyUrl () {
           navigator.clipboard.writeText(this.userUrl);
+          toastr.info('Hit paste to send copied URL', 'Copied!')
+            
         }
     },
     mounted() {

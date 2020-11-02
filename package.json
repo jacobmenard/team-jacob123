@@ -27,6 +27,7 @@
         "numeral": "^2.0.6",
         "sweetalert": "^2.1.2",
         "sweetalert2": "^10.9.0",
+        "toastr": "^2.1.4",
         "vue-numeral-filter": "^2.0.0",
         "vue-router": "^3.4.8"
     }

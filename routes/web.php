@@ -28,17 +28,20 @@ Route::get('/register/{id}/{acc_type}', function () {
 Route::get('/register_admin/new/admin', function () {
     return view('auth/register_admin');
 });
+
 // Route::get('/loadstation', function () {
 //     return view('home');
 // });
 
 
 
-Auth::routes();
 
+Auth::routes();
+//agent Controller
 Route::get('/sa/post/updateAgentStatus/{id}/{stat}', 'AgentController@updateStatus');
 Route::get('/sa/get/getAgentList', 'AgentController@getAgentList');
-
+Route::middleware('auth')->post('/agent/setPercentage', 'AgentController@setAgentPercentage');
+Route::middleware('auth')->post('/agent/sendLoad', 'AgentController@sendLoad');
 Route::get('/login/getMainUser' , 'AgentController@getMainUserLoad');
 Route::get('/login/getTransactionType', 'AgentController@getTransactionType');
 Route::get('/login/loadtransfer/{agentID}', 'UsersController@getIndividualUser');

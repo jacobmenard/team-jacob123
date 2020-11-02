@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="{{ asset('argon/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('argon/assets/css/argon.css?v=1.2.0') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" type="text/css">
+    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js')}}" defer></script>
+
 
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}

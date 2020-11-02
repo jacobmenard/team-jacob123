@@ -20,3 +20,7 @@ window._ = require('lodash');
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+window.toastSuccess = function(title, body) {
+    window.events.$emit('toast-success', title, body);
+};
