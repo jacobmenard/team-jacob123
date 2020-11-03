@@ -47,5 +47,5 @@ class User extends Authenticatable
         return $this->hasOne('App\TblAccPoints', 'pt_acc')->select('pt_no', 'pt_acc', 'acc_load', 'acc_com');
     }
     
-
+    
 }

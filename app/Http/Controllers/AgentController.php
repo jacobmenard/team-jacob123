@@ -66,5 +66,16 @@ class AgentController extends Controller
         ]);
         
     }
+
+    public function getTransactionLogs(Request $request) {
+
+        $query = TblTransactions::with('getTransType')
+                ->where('trans_to', $request->agentID)
+                ->orderBy('created_at', 'desc')
+                ->get();
+ 
+
+        return $query;
+    }
     
 }

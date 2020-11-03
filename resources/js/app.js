@@ -10,7 +10,13 @@ import swal from 'sweetalert';
 import vueNumeralFilterInstaller from 'vue-numeral-filter';
 Vue.use(vueNumeralFilterInstaller, { locale: 'en-gb' });
 
+import moment from 'moment';
 
+Vue.filter('formatDate', function(value) {
+    if (value) {
+      return moment(String(value)).format('MM/DD/YYYY hh:mm:ss')
+    }
+});
 
 Vue.use(VueRouter);
 
