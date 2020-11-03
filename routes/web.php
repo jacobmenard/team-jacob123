@@ -25,6 +25,9 @@ Route::get('/register/{id}/{acc_type}', function () {
     return view('auth/register');
 });
 
+Route::get('/register_admin/new/admin', function () {
+    return view('auth/register_admin');
+});
 // Route::get('/loadstation', function () {
 //     return view('home');
 // });

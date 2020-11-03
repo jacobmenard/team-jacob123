@@ -2306,6 +2306,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -44893,7 +44894,9 @@ var render = function() {
                             _vm._v(
                               _vm._s(
                                 _vm._f("numeral")(
-                                  agent.accout_points.acc_load,
+                                  agent.accout_points != null
+                                    ? agent.accout_points.acc_load
+                                    : "",
                                   "0,0.00"
                                 )
                               )
