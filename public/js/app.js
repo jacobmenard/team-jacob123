@@ -2651,12 +2651,59 @@ __webpack_require__.r(__webpack_exports__);
         remarks: ''
       },
       error: [],
-      trans_log: ''
+      trans_log: '',
+      amt_error: false
     };
   },
   methods: {
     saveTransaction: function saveTransaction() {
       var _this = this;
+
+      var message = [];
+
+      if (this.form.loadAmt == 0 || this.form.loadAmt == '') {
+        message.push("Load amount is required");
+      } else if (this.form.loadAmt <= 0) {
+        message.push("Please input amount greater than zero amount");
+        this.form.loadAmt = '';
+      } else if (parseFloat(this.login_user.accout_points.acc_load) < parseFloat(this.form.loadAmt)) {
+        message.push("Your remaining load balance: " + this.login_user.accout_points.acc_load + ". error to transact, please try again!");
+        this.form.loadAmt = '';
+      } //
+      else if (this.amt_error) {
+          message.push("The balance or sales total must be non negative");
+        }
+
+      if (message.length == 0) {
+        swal({
+          title: "Confirmation",
+          text: "Do you want complete this transaction?",
+          icon: "info",
+          buttons: ['Cancel', 'Continue'],
+          dangerMode: true
+        }).then(function (choice) {
+          if (choice) {
+            _this.addTransaction(); // function for add a transaction
+
+
+            swal("Transaction success!", 'Transaction has been successfully transact!', "Suceess");
+            setTimeout(function () {
+              _this.getLoginAgent();
+
+              _this.getTransactionType();
+
+              _this.getIndividualUser();
+
+              _this.getIndividualTransaction();
+            }, 1000);
+          }
+        }); //connfirmation before sending load incase of mistype of number//
+      } else {
+        swal("Error!", message.toString(), "warning");
+      }
+    },
+    addTransaction: function addTransaction() {
+      var _this2 = this;
 
       var trans_val = {
         'transType': this.trans_type.trans_typ_no,
@@ -2667,9 +2714,9 @@ __webpack_require__.r(__webpack_exports__);
       };
       var url = '/save/transaction';
       axios.post(url, trans_val).then(function (res) {
-        _this.form.reset();
+        Object.assign(_this2.$data, _this2.$options.data.call(_this2));
       })["catch"](function (error) {
-        _this.errors = error.response.data.errors;
+        _this2.errors = error.response.data.errors;
       });
     },
     backtoLoadStation: function backtoLoadStation() {
@@ -2678,51 +2725,58 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     getLoginAgent: function getLoginAgent() {
-      var _this2 = this;
+      var _this3 = this;
 
       var url = '/login/getMainUser';
       axios.get(url).then(function (res) {
-        _this2.login_user = res.data;
+        _this3.login_user = res.data;
       })["catch"](function () {
         console.log(error);
       });
     },
     getTransactionType: function getTransactionType() {
-      var _this3 = this;
+      var _this4 = this;
 
       var trans = this.$route.params.trans == 'Deposit' ? 1 : this.$route.params.trans == 'Widraw' ? 2 : this.$route.params.trans == 'Sales' ? 3 : 0;
       var url = '/login/getTransactionType/' + trans;
       axios.get(url).then(function (res) {
-        _this3.trans_type = res.data;
+        _this4.trans_type = res.data;
       });
     },
     getIndividualUser: function getIndividualUser() {
-      var _this4 = this;
+      var _this5 = this;
 
       var url = '/login/loadtransfer/' + this.userID;
       axios.get(url).then(function (res) {
-        _this4.individualUser = res.data;
+        _this5.individualUser = res.data;
       });
     },
     getTotalLoad: function getTotalLoad(current, addition) {
       var val1 = parseFloat(current);
       var val2 = parseFloat(addition);
+      var tot = 0;
 
       if (this.trans_type.trans_typ_no == 1) {
-        return val1 + val2;
+        tot = val1 + val2;
       } else {
-        return val1 - val2;
+        tot = val1 - val2;
       }
+
+      if (tot < 0) {
+        this.amt_error = true;
+      }
+
+      return tot;
     },
     getIndividualTransaction: function getIndividualTransaction() {
-      var _this5 = this;
+      var _this6 = this;
 
       var url = '/agent/transaction';
       var data = {
         'agentID': this.userID
       };
       axios.post(url, data).then(function (res) {
-        _this5.trans_log = res.data;
+        _this6.trans_log = res.data;
       });
     }
   },
@@ -45195,15 +45249,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              _vm._s(
-                                _vm.trans_type.trans_typ_no == 1
-                                  ? "Deposit"
-                                  : _vm.trans_type.trans_typ_no == 2
-                                  ? "Widrawal load"
-                                  : _vm.trans_type.trans_typ_no == 3
-                                  ? "Widraw sales"
-                                  : ""
-                              ) + " amount"
+                              _vm._s(_vm.trans_type.trans_type) + " Amount"
                             )
                           ]
                         ),
@@ -45533,7 +45579,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Amount")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Payment Method")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Transaction remarks")])
       ])
     ])
   }

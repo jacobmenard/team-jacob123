@@ -59,7 +59,7 @@
                             <label class="form-control-label d-block">User name: {{individualUser.username}}</label>
                             <label v-if="trans_type.trans_typ_no == 2" class="form-control-label d-block">Remaining Load: {{individualUser.accout_points.acc_load | numeral('0,0.00')}}</label>
                             <label v-if="trans_type.trans_typ_no == 3" class="form-control-label d-block">Current Sales: {{individualUser.accout_points.acc_com | numeral('0,0.00')}}</label>
-                            <label class="form-control-label" for="load-amount">{{trans_type.trans_typ_no == 1 ? 'Deposit' : trans_type.trans_typ_no == 2 ? 'Widrawal load' : trans_type.trans_typ_no == 3 ? 'Widraw sales' : ''}} amount</label>
+                            <label class="form-control-label" for="load-amount">{{trans_type.trans_type}} Amount</label>
                             <input id="input-address" class="form-control" :class="{'is-invalid' : form.loadAmt < 0}" placeholder="0.00" type="number" v-model="form.loadAmt">
                             <!-- <span v-if="errors.transAmt" class="text-danger">Menard</span> -->
                         </div>
@@ -107,7 +107,7 @@
                       <th scope="col">Transaction <span class="d-block">date</span></th>
                       <th scope="col">Type of <span class="d-block">transaction</span></th>
                       <th scope="col">Amount</th>
-                      <th scope="col">Payment Method</th>
+                      <th scope="col">Transaction remarks</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -133,23 +133,71 @@
 <script>
     export default {
         data() {
-            return {
-              login_user: '',
-              trans_type: '',
-              individualUser: null,
-              userID: this.$route.params.user,
+          return {
+            login_user: '',
+            trans_type: '',
+            individualUser: null,
+            userID: this.$route.params.user,
 
-              form: {
-                loadAmt: '',
-                remarks: ''
-              },
-              error: [],
+            form: {
+              loadAmt: '',
+              remarks: ''
+            },
+            error: [],
 
-              trans_log: ''
-            }
+            trans_log: '',
+            amt_error: false
+          }
         },
         methods: {
             saveTransaction() {
+              let message = [];
+              if(this.form.loadAmt == 0 || this.form.loadAmt == ''){
+                  message.push("Load amount is required");
+              } 
+              else if(this.form.loadAmt <= 0) {
+                message.push("Please input amount greater than zero amount");
+                this.form.loadAmt = ''
+              }
+              else if (parseFloat(this.login_user.accout_points.acc_load) < parseFloat(this.form.loadAmt)) {
+                message.push("Your remaining load balance: " + this.login_user.accout_points.acc_load + ". error to transact, please try again!");
+                this.form.loadAmt = ''
+              }//
+              else if(this.amt_error) {
+                message.push("The balance or sales total must be non negative");
+              }
+
+              if(message.length == 0){
+                swal({
+                  title: "Confirmation",
+                  text: "Do you want complete this transaction?",
+                  icon: "info",
+                  buttons: ['Cancel', 'Continue'],
+                  dangerMode: true,
+                }).then((choice) => {
+                  
+                  if (choice) {
+
+                    this.addTransaction() // function for add a transaction
+                    
+
+                    swal("Transaction success!", 'Transaction has been successfully transact!', "Suceess");
+                    setTimeout(() => {
+                      
+                      this.getLoginAgent()
+                      this.getTransactionType()
+                      this.getIndividualUser()
+                      this.getIndividualTransaction()
+                    }, 1000);
+                  }
+                })
+                //connfirmation before sending load incase of mistype of number//
+              } else {
+                swal("Error!", message.toString(), "warning");
+              }
+              
+            },
+            addTransaction() {
               var trans_val = {
                 'transType': this.trans_type.trans_typ_no,
                 'transFrom' : this.login_user.id,
@@ -159,7 +207,7 @@
               }
               var url = '/save/transaction'
               axios.post(url, trans_val).then((res) => {
-                this.form.reset()
+                Object.assign(this.$data, this.$options.data.call(this));
               }).catch((error) => {
                   this.errors = error.response.data.errors;
               })
@@ -191,12 +239,16 @@
             getTotalLoad(current, addition) {
               var val1 = parseFloat(current)
               var val2 = parseFloat(addition)
+              var tot = 0
               if (this.trans_type.trans_typ_no == 1) {
-                return val1 + val2;
+                tot = val1 + val2;
               } else {
-                return val1 - val2;
+                tot = val1 - val2;
               }
-
+              if (tot < 0) {
+                this.amt_error = true
+              }
+              return tot
             },
             getIndividualTransaction() {
               var url = '/agent/transaction';

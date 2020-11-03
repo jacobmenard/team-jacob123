@@ -71,6 +71,7 @@ class AgentController extends Controller
 
         $query = TblTransactions::with('getTransType')
                 ->where('trans_to', $request->agentID)
+                ->orderBy('created_at', 'desc')
                 ->get();
  
 
